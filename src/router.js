@@ -5,6 +5,7 @@ import vetRoutes from './vet/router.js';
 
 import Index from './Index';
 import Login from './Login';
+import Logout from './Logout';
 
 import store from './store/';
 Vue.use(Router)
@@ -19,6 +20,12 @@ const baseRoutes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path:'/logout',
+    name: 'Logout',
+    meta: { requiresAuth: true },
+    component: Logout
   }
 ];
 const routes = baseRoutes.concat(vetRoutes);

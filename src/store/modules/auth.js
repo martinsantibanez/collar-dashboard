@@ -33,7 +33,7 @@ export default {
   },
   actions: {
     async login({commit}, user){
-      var response = await Api().post('http://localhost:3000/api/login/', user);
+      var response = await Api().post('login/', user);
       var token = response.data.token;
       commit('setToken', {'token': token});
       commit('setUser', {'user': response.data.user});

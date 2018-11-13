@@ -1,16 +1,16 @@
 <template>
   <div>
     <b-badge>{{msg}}</b-badge>
-    <b-table responsive hover :items="users" :fields="tableFields">
+    <b-table responsive hover :items="usuarios" :fields="tableFields">
       <template slot="action" slot-scope="data">
-        <b-button :to="{ name: 'editUser', params: { id: data.item._id } }">Edit</b-button>
-        <b-button @click="deleteUser(data.item._id)">Delete</b-button>
+        <!-- <b-button :to="{ name: 'editUsuario', params: { id: data.item._id } }">Edit</b-button> -->
+        <b-button @click="deleteUsuario(data.item._id)">Delete</b-button>
       </template>
       <template slot="takenTables" slot-scope="data">
         {{ data.item.tables.length }}
       </template>
     </b-table>
-    <b-button :to="{name: 'addUser'}" variant="success">Add</b-button>
+    <!-- <b-button :to="{name: 'addUsuario'}" variant="success">Add</b-button> -->
   </div>
 </template>
 
@@ -18,21 +18,21 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'Users',
+  name: 'Usuarios',
   data () {
     return {
-      tableFields: ['name', 'email', 'role', 'takenTables', 'action'],
-      msg: 'Welcome to users'
+      tableFields: ['email', 'role', 'action'],
+      msg: 'Welcome to usuarios'
     }
   },
-  computed: mapState('users', {
-    users: state => state.list
+  computed: mapState('usuarios', {
+    usuarios: state => state.list
   }),
   created(){
-    this.getUsers();
+    this.getUsuarios();
   },
   methods: {
-    ...mapActions('users', ['deleteUser', 'getUsers']),
+    ...mapActions('usuarios', ['deleteUsuario', 'getUsuarios']),
 
   }
 }

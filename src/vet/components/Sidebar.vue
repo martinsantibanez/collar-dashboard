@@ -21,7 +21,9 @@ export default {
   data () {
     return {
       sidebarItems: [
-        { title: 'Dashboard', route: { name: 'dashboard' }, faIcon: 'fa fa-columns' },
+        { title: 'Dashboard', route: { name: 'Dashboard' }, faIcon: 'fa fa-columns' },
+        { title: 'Usuarios', route: { name: 'Usuarios' }, faIcon: 'fa fa-users' },
+        { title: 'Logout', route: { name: 'Logout' }, faIcon: 'fas fa-sign-out-alt' },
       ]
     }
   }

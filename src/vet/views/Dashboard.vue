@@ -1,5 +1,6 @@
 <template>
   <div>
+    Bienvenido {{user.email}}
     <chart :chart-data="datacollection"></chart>
     <code>
      {{data}}
@@ -11,6 +12,8 @@
 /* eslint-disable */
 import Chart from '../components/Chart'
 import io from 'socket.io-client';
+import { mapState } from 'vuex';
+
 
 export default {
   name: 'Dashboard',
@@ -22,6 +25,9 @@ export default {
       socket : io('localhost:4000')
     }
   },
+  computed: mapState('auth', {
+    user: state => state.user
+  }),
   components: {Chart},
   mounted(){
     this.socket.on('DATA', (data) => {

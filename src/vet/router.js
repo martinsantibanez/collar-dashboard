@@ -7,17 +7,17 @@ export default [
         path: '/vet',
         name: 'vet',
         component: Layout,
-        redirect: {name: 'dashboard'},
+        redirect: {name: 'Dashboard'},
         meta: { requiresAuth: true },
         children: [
             {
                 path: 'dashboard',
-                name: 'dashboard',
+                name: 'Dashboard',
                 component: DashboardView
             },
             {
                 path: 'usuarios',
-                name: 'usuarios',
+                name: 'Usuarios',
                 component: UsuariosView
             }
         ]

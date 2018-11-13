@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <router-link :to="{name: 'dashboard'}" class="navbar-brand col-sm-3 col-md-2 mr-0">GarrasVet</router-link>
+      <router-link :to="{name: 'Dashboard'}" class="navbar-brand col-sm-3 col-md-2 mr-0">GarrasVet</router-link>
       <p class="col-sm-6 form-control-dark"></p>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
