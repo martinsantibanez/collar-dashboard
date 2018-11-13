@@ -9,7 +9,7 @@
 
 <script>
 /* eslint-disable */
-import Chart from '@/components/Chart'
+import Chart from '../components/Chart'
 import io from 'socket.io-client';
 
 export default {

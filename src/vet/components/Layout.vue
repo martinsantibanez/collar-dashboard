@@ -16,7 +16,7 @@
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 export default {
-  name: 'AdminLayout',
+  name: 'VetLayout',
   components: {
     'Sidebar': Sidebar,
     'Navbar': Navbar
