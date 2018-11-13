@@ -22,7 +22,7 @@ export default {
       msg: 'Welcome to dashboard',
       data: [],
       datacollection: null,
-      socket : io('localhost:4000')
+      // socket : io('localhost:4000')
     }
   },
   computed: mapState('auth', {
@@ -30,11 +30,10 @@ export default {
   }),
   components: {Chart},
   mounted(){
-    this.socket.on('DATA', (data) => {
-      this.pushMax(this.data, data);
-      // this.data = [...this.data, data];
-      this.generateData();
-    });
+    // this.socket.on('DATA', (data) => {
+    //   this.pushMax(this.data, data);
+    //   this.generateData();
+    // });
   },
   methods: {
     generateData(){

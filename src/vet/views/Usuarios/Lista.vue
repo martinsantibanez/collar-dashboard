@@ -2,15 +2,15 @@
   <div>
     <b-badge>{{msg}}</b-badge>
     <b-table responsive hover :items="usuarios" :fields="tableFields">
-      <template slot="action" slot-scope="data">
-        <!-- <b-button :to="{ name: 'editUsuario', params: { id: data.item._id } }">Edit</b-button> -->
-        <b-button @click="deleteUsuario(data.item._id)">Delete</b-button>
+      <template slot="accion" slot-scope="data">
+        <b-button :to="{ name: 'UsuariosEditar', params: { id: data.item._id } }">Editar</b-button>
+        <b-button @click="deleteUsuario(data.item._id)">Eliminar</b-button>
       </template>
       <template slot="takenTables" slot-scope="data">
         {{ data.item.tables.length }}
       </template>
     </b-table>
-    <!-- <b-button :to="{name: 'addUsuario'}" variant="success">Add</b-button> -->
+    <b-button :to="{name: 'UsuariosCrear'}" variant="success">Agregar</b-button>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   name: 'Usuarios',
   data () {
     return {
-      tableFields: ['email', 'role', 'action'],
+      tableFields: ['email', 'nombre', 'role', 'accion'],
       msg: 'Welcome to usuarios'
     }
   },

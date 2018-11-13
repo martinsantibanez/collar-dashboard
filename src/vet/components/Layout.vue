@@ -3,8 +3,8 @@
     <Navbar></Navbar>
       <div class="row">
         <Sidebar></Sidebar>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <b-col sm="12" md="8">
+        <main role="main" class="col-md-12 ml-sm-auto col-lg-10 pt-3 px-4">
+          <b-col sm="12">
             <router-view/>
           </b-col>
         </main>
