@@ -5,7 +5,8 @@ export default {
   namespaced: true,
   state: {
     list: [],
-    usuario: {}
+    usuario: {},
+    mascotas: []
   },
   getters: {
     usuario(state){
@@ -18,6 +19,9 @@ export default {
     },
     setUsuario(state, usuario){
       state.usuario = usuario;
+    },
+    setMascotas(state, mascotas){
+      state.mascotas = mascotas;
     }
   },
   actions: {
@@ -39,5 +43,14 @@ export default {
       await Api().delete('usuarios/'+id);
       dispatch('getUsuarios');
     },
+    async getMascotas({commit}, id){
+      const response = await Api().get('usuarios/'+id+'/mascotas');
+      commit('setMascotas', response.data);
+    },
+    async addMascota({commit}, payload){
+      console.log(payload);
+      await Api().post('usuarios/'+payload.id+'/mascotas', payload.mascota);
+
+    }
   }
 }

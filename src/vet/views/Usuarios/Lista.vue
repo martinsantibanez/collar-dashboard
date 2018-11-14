@@ -3,6 +3,7 @@
     <b-badge>{{msg}}</b-badge>
     <b-table responsive hover :items="usuarios" :fields="tableFields">
       <template slot="accion" slot-scope="data">
+        <b-button :to="{ name: 'UsuariosMascotas', params: { id: data.item._id } }">Mascotas</b-button>
         <b-button :to="{ name: 'UsuariosEditar', params: { id: data.item._id } }">Editar</b-button>
         <b-button @click="deleteUsuario(data.item._id)">Eliminar</b-button>
       </template>
