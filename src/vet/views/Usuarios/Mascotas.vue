@@ -4,7 +4,7 @@
     <h1>Mascotas de {{usuario.nombre}}</h1>
     <b-table responsive hover :items="mascotas" :fields="tableFields">
       <template slot="accion" slot-scope="data">
-        <b-button :to="{ name: 'MascotasEditar', params: { id: data.item._id } }">Editar</b-button>
+        <b-button :to="{ name: 'UsuariosMascotasEditar', params: { id: data.item._id } }">Editar</b-button>
         <!-- <b-button @click="deleteUsuario(data.item._id)">Eliminar</b-button> -->
       </template>
     </b-table>

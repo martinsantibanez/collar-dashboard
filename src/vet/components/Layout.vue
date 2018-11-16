@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar></Navbar>
+    <!-- <Navbar></Navbar> -->
       <div class="row">
         <Sidebar></Sidebar>
         <main role="main" class="col-md-12 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -33,6 +33,7 @@ export default {
 <style>
 body {
   font-size: .875rem;
+  background-color: #FCFCFC !important;
 }
 
 .feather {

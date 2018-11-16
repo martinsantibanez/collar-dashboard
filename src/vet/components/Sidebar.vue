@@ -1,6 +1,6 @@
 <template>
-  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky">
+  <nav class="col-md-2 d-none d-md-block sidebar">
+      <router-link :to="{name: 'Dashboard'}" class="navbar-brand col-12">SmartCan</router-link>
       <ul class="nav flex-column">
         <li class="nav-item" v-for="item in sidebarItems" :key="item.title">
           <router-link class="nav-link" :to="item.route" active-class="active">
@@ -11,7 +11,6 @@
           <!-- </a> -->
         </li>
       </ul>
-    </div>
   </nav>
 </template>
 
@@ -34,15 +33,27 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .sidebar {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 100; /* Behind the navbar */
   padding: 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .1);
+  text-align: left;
+  background-color: #fff;
 }
-
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  /* background-color: rgba(0, 0, 0, .25); */
+  color: #4487FA;
+  /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25); */
+  /* min-width: 100%; */
+  text-align: center;
+  font-size: 20pt;
+}
 .sidebar-sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -54,8 +65,13 @@ export default {
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
+  font-weight: 400;
+  font-family: 'Roboto';
+  font-size: 16pt;
+  color: #858D91;
+}
+.sidebar .nav-link i {
+  margin-right: 10px;
 }
 
 .sidebar .nav-link .feather {

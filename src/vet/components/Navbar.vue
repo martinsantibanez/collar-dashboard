@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <nav class="navbar flex-md-nowrap p-0">
       <router-link :to="{name: 'Dashboard'}" class="navbar-brand col-sm-3 col-md-2 mr-0">GarrasVet</router-link>
       <p class="col-sm-6 form-control-dark"></p>
       <ul class="navbar-nav px-3">
@@ -24,14 +24,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.navbar {
+  background-color: #fff;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .1);
+  z-index: 999;
+}
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  /* background-color: rgba(0, 0, 0, .25); */
+  color: #4487FA;
+  /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25); */
 }
-
 .navbar .form-control {
   padding: .75rem 1rem;
   border-width: 0;
