@@ -5,7 +5,7 @@
         <li class="nav-item" v-for="item in sidebarItems" :key="item.title">
           <router-link class="nav-link" :to="item.route" active-class="active">
           <!-- <a class="nav-link active" href="#"> -->
-            <i class="fa-fw" :class="item.faIcon"></i>
+            <span class="icon"><i class="fa-fw" :class="item.faIcon"></i></span>
             {{item.title}}
             </router-link>
           <!-- </a> -->
@@ -47,6 +47,7 @@ export default {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
+  font-family: 'Korolev';
   /* background-color: rgba(0, 0, 0, .25); */
   color: #4487FA;
   /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25); */
@@ -65,15 +66,17 @@ export default {
 }
 
 .sidebar .nav-link {
-  font-weight: 400;
+  font-weight: 300;
   font-family: 'Roboto';
   font-size: 16pt;
   color: #858D91;
 }
-.sidebar .nav-link i {
+.sidebar .nav-link .icon {
   margin-right: 10px;
 }
-
+.sidebar .nav-link:hover {
+  color: #007bff;
+}
 .sidebar .nav-link .feather {
   margin-right: 4px;
   color: #999;
@@ -81,6 +84,7 @@ export default {
 
 .sidebar .nav-link.active {
   color: #007bff;
+  font-weight: 500;
 }
 
 .sidebar .nav-link:hover .feather,

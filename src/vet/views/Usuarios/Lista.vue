@@ -1,27 +1,25 @@
 <template>
   <div class="lista">
-    <!-- <div class="row"> -->
-      <h2>Clientes</h2>
-      <div class="card-columns">
-        <router-link :to="{ name: 'UsuariosEditar', params: { id: usuario._id } }" class="card usuario py-3" v-for="usuario in usuarios" v-bind:key="usuario._id">
-          {{usuario.nombre}}
-        </router-link>
-        <router-link :to="{name: 'UsuariosCrear'}" class="card agregar py-3">
-          Agregar
-        </router-link>
+      <h2>{{title}}</h2>
+      <div class="row">
+        <div 
+        class="col-3 py-3 usuarios"
+        v-for="usuario in usuarios" v-bind:key="usuario._id">
+          <router-link 
+          :to="{ name: 'UsuariosEditar', params: { id: usuario._id } }" 
+          class="card card-body h-100 usuario">
+            {{usuario.nombre}}
+          </router-link>
+        </div>
+        <div class="col-3 py-3 usuarios">
+          <div class="card card-body h-100 agregar">
+            <router-link 
+            :to="{name: 'UsuariosCrear'}" >
+              <i class="fas fa-plus"></i> NUEVO
+            </router-link>
+          </div>
+        </div>
       </div>
-    <!-- </div> -->
-    <!-- <b-badge>{{msg}}</b-badge>
-    <b-table responsive hover :items="usuarios" :fields="tableFields">
-      <template slot="accion" slot-scope="data">
-        <b-button :to="{ name: 'UsuariosMascotas', params: { id: data.item._id } }">Mascotas</b-button>
-        <b-button :to="{ name: 'UsuariosEditar', params: { id: data.item._id } }">Editar</b-button>
-        <b-button @click="deleteUsuario(data.item._id)">Eliminar</b-button>
-      </template>
-      <template slot="takenTables" slot-scope="data">
-        {{ data.item.tables.length }}
-      </template>
-    </b-table> -->
   </div>
 </template>
 
@@ -33,7 +31,7 @@ export default {
   data () {
     return {
       tableFields: ['email', 'nombre', 'role', 'accion'],
-      msg: 'Welcome to usuarios'
+      title: 'Clientes'
     }
   },
   computed: mapState('usuarios', {
@@ -54,37 +52,40 @@ export default {
   text-align: left;
   margin-bottom: 20px;
 }
-.card-columns{
-  column-count: 4 !important;
-}
+
 .row {
    display: flex;
    flex-wrap: wrap;
 }
-.card-columns .card{
+.usuarios .card{
   background-color: #fff;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, .1);
-  border-radius: 20px;
-  font-family: 'Open Sans';
-  font-weight: 400;
-  font-size: 18pt;
+  /* box-shadow: 2px 2px 6px rgba(0, 0, 0, .1); */
+  /* border-radius: 20px; */
+
   color: #000;
-  transition: ease 0.5s;
+  font-weight: 300;
+  font-size: 14pt;
 }
-.card-columns .card:hover{
+.usuarios .card:hover{
   text-decoration: none;
   color: #4487FA;
   
 }
 .card.agregar{
   background-color: #00D664;
-  color: #fff;
-  transition: ease 0.5s;
-  font-weight: 600;
+  transition: ease 0.2s;
 }
-.card.agregar:hover {
+.card.agregar:hover{
+  background-color: #04EC71;
+}
+.card.agregar a{
+  font-weight: 600;
+  /* font-family: ''; */
   color: #fff;
-  background-color: #00C55C;
+}
+.card.agregar a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 </style>
