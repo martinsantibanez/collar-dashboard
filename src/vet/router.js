@@ -2,6 +2,7 @@ import Layout from './components/Layout';
 import Dashboard from './views/Dashboard';
 import UsuariosLista from './views/Usuarios/Lista'
 import UsuariosCrear from './views/Usuarios/Crear'
+import UsuariosVer from './views/Usuarios/Ver'
 import UsuariosEditar from './views/Usuarios/Editar'
 import UsuariosMascotas from './views/Usuarios/Mascotas'
 import UsuariosMascotasCrear from './views/Usuarios/MascotasCrear'
@@ -31,6 +32,12 @@ export default [
                 path: 'usuarios/crear',
                 name: 'UsuariosCrear',
                 component: UsuariosCrear,
+            },
+            {
+                path: 'usuarios/:id',
+                props: true,
+                name: 'UsuariosVer',
+                component: UsuariosVer,
             },
             {
                 path: 'usuarios/:id/editar',

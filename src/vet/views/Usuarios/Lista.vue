@@ -6,7 +6,7 @@
         class="col-3 py-3 usuarios"
         v-for="usuario in usuarios" v-bind:key="usuario._id">
           <router-link 
-          :to="{ name: 'UsuariosEditar', params: { id: usuario._id } }" 
+          :to="{ name: 'UsuariosVer', params: { id: usuario._id } }" 
           class="card card-body h-100 usuario">
             {{usuario.nombre}}
           </router-link>
@@ -15,7 +15,7 @@
           <div class="card card-body h-100 agregar">
             <router-link 
             :to="{name: 'UsuariosCrear'}" >
-              <i class="fas fa-plus"></i> NUEVO
+              <i class="fas fa-plus"></i> Nuevo
             </router-link>
           </div>
         </div>
