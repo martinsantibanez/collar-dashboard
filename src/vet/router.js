@@ -51,7 +51,7 @@ export default [
                 component: UsuariosMascotasCrear,
             },
             {
-                path: 'usuarios/:id/mascotas/:id/editar',
+                path: 'usuarios/:id/mascotas/:id_mascota/editar',
                 props: true,
                 name: 'UsuariosMascotasEditar',
                 component: MascotasEditar,
