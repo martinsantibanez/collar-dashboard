@@ -8,6 +8,7 @@ import UsuariosMascotasCrear from './views/Usuarios/MascotasCrear'
 
 import MascotasLista from './views/Mascotas/Lista'
 import MascotasEditar from './views/Mascotas/Editar'
+import MascotasVer from './views/Mascotas/Ver'
 
 export default [
     {
@@ -33,22 +34,28 @@ export default [
                 component: UsuariosCrear,
             },
             {
-                path: 'usuarios/:id',
+                path: 'usuarios/:id_usuario',
                 props: true,
                 name: 'UsuariosVer',
                 component: UsuariosVer,
             },
             {
-                path: 'usuarios/:id/editar',
+                path: 'usuarios/:id_usuario/editar',
                 props: true,
                 name: 'UsuariosEditar',
                 component: UsuariosEditar,
             },
             {
-                path: 'usuarios/:id/mascotas/crear',
+                path: 'usuarios/:id_usuario/mascotas/crear',
                 props: true,
                 name: 'UsuariosMascotasCrear',
                 component: UsuariosMascotasCrear,
+            },
+            {
+                path: 'usuarios/:id_usuario/mascotas/:id_mascota',
+                props: true,
+                name: 'UsuariosMascotasVer',
+                component: MascotasVer,
             },
             {
                 path: 'usuarios/:id_usuario/mascotas/:id_mascota/editar',

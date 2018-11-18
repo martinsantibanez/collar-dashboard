@@ -28,7 +28,7 @@
                   label="Año nacimiento">
           <b-form-input type="number" id="nacimiento" v-model.trim="mascota.nacimiento"></b-form-input>
         </b-form-group>
-        <b-button type="submit" variant="primary">Edit</b-button>
+        <b-button type="submit" variant="primary">Guardar</b-button>
       </b-form>
     </b-col>
   </b-row>
@@ -41,7 +41,7 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'MascotasEditar',
-  props: ['id_mascota'],
+  props: ['id_mascota', 'id_usuario'],
   data () {
     return {
       errors: []
@@ -59,9 +59,16 @@ export default {
       evt.preventDefault()
       try {
         await this.editMascota(this.mascota);
-        this.$router.push({
-          name: 'Mascotas'
-        });
+        if(this.id_usuario)
+          this.$router.push({
+            name: 'UsuariosMascotasVer',
+            id_usuario: this.id_usuario,
+            id_mascota: this.id_mascota
+          })
+        else
+          this.$router.push({
+            name: 'Mascotas'
+          });
       } catch(e) {
         console.log(e)
         this.errors.push(e)

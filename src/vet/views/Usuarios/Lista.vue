@@ -8,7 +8,7 @@
       class="col-3 py-3 col-lista"
       v-for="usuario in usuarios" v-bind:key="usuario._id">
         <router-link 
-        :to="{ name: 'UsuariosVer', params: { id: usuario._id } }" 
+        :to="{ name: 'UsuariosVer', params: { id_usuario: usuario._id } }" 
         class="card card-body h-100">
           {{usuario.nombre}}
         </router-link>

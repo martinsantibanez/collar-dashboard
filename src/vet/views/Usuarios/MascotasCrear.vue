@@ -41,7 +41,7 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'MascotasCrear',
-  props: ['id'],
+  props: ['id_usuario'],
   data () {
     return {
       errors: []
@@ -57,11 +57,18 @@ export default {
     async onSubmit (evt) {
       evt.preventDefault()
       try {
-        await this.addMascota({id: this.id, mascota: this.mascota});
+        var created = await this.addMascota({id: this.id_usuario, mascota: this.mascota});
+        console.log(created._id);
         this.$router.push({
-          name: 'UsuariosMascotas',
-          id: this.id
+          name: 'UsuariosVer',
+          // id_mascota: created._id,
+          id_usuario: this.id_usuario,
         });
+        // this.$router.push({
+        //   name: 'UsuariosMascotasVer',
+        //   id_mascota: created._id,
+        //   id_usuario: this.id_usuario,
+        // });
       } catch(e) {
         console.log(e)
         this.errors.push(e)

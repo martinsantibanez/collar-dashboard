@@ -15,7 +15,7 @@
               <li><strong>Domicilio:</strong> {{usuario.domicilio}} </li>
             </ul>
             <div class="text-center">
-              <b-button :to="{name: 'UsuariosEditar', id: usuario._id}" class="px-3" variant="primary">Editar</b-button>
+              <b-button :to="{name: 'UsuariosEditar', id_usuario: usuario._id}" class="px-3" variant="primary">Editar</b-button>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
       class="col-3 py-3 col-lista"
       v-for="mascota in usuario.mascotas" v-bind:key="mascota._id">
         <router-link 
-        :to="{ name: 'UsuariosMascotasEditar', params: { id_usuario: usuario._id, id_mascota: mascota._id  } }" 
+        :to="{ name: 'UsuariosMascotasVer', params: { id_usuario: usuario._id, id_mascota: mascota._id  } }" 
         class="card card-body h-100">
           {{mascota.nombre}}
         </router-link>
@@ -37,7 +37,7 @@
       <div class="col-3 py-3 col-lista">
         <div class="card card-body h-100 agregar">
           <router-link 
-          :to="{name: 'UsuariosMascotasCrear', id: usuario._id}" >
+          :to="{name: 'UsuariosMascotasCrear', id_usuario: usuario._id}" >
             <i class="fas fa-plus"></i> Nuevo
           </router-link>
         </div>
@@ -53,7 +53,7 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'UsuariosVer',
-  props: ['id'],
+  props: ['id_usuario'],
   data () {
     return {
     }
@@ -62,7 +62,7 @@ export default {
     usuario: state => state.usuario
   }),
   created(){
-    this.getUsuarioById(this.id);
+    this.getUsuarioById(this.id_usuario);
   },
   methods: {
     ...mapActions('usuarios', ['getUsuarioById'])
