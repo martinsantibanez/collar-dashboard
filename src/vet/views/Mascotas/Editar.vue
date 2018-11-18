@@ -11,7 +11,7 @@
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
-                  label="Name">
+                  label="Nombre">
           <b-form-input type="text" id="name" v-model.trim="mascota.nombre"></b-form-input>
         </b-form-group>
         <b-form-group
@@ -41,7 +41,7 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'MascotasEditar',
-  props: ['id'],
+  props: ['id_mascota'],
   data () {
     return {
       errors: []
@@ -51,7 +51,7 @@ export default {
     mascota: state => state.mascota
   }),
   created(){
-    this.getMascotaById(this.id);
+    this.getMascotaById(this.id_mascota);
   },
   methods: {
     ...mapActions('mascotas', ['editMascota', 'getMascotaById']),

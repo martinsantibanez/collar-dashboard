@@ -29,7 +29,7 @@
                   horizontal
                   :label-cols="2"
                   breakpoint="md"
-                  label="Name">
+                  label="Nombre">
           <b-form-input type="text" id="name" v-model.trim="usuario.nombre"></b-form-input>
         </b-form-group>
         <b-form-group
@@ -40,12 +40,19 @@
           <b-form-input type="text" id="role" v-model.trim="usuario.role" placeholder="user o vet"></b-form-input>
         </b-form-group>
         <!-- TODO borrar esto -->
-          <b-form-group
+        <b-form-group
                   horizontal
                   :label-cols="2"
                   breakpoint="md"
-                  label="Sexo">
-          <b-form-input type="text" id="role" v-model.trim="usuario.sexo" placeholder="M o F"></b-form-input>
+                  label="Telefono">
+          <b-form-input type="number" id="role" v-model.trim="usuario.telefono"></b-form-input>
+        </b-form-group>
+        <b-form-group
+                  horizontal
+                  :label-cols="2"
+                  breakpoint="md"
+                  label="Domicilio">
+          <b-form-input type="text" id="role" v-model.trim="usuario.domicilio"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Guardar</b-button>
       </b-form>

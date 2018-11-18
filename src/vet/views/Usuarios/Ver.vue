@@ -1,20 +1,24 @@
 <template>
   <div class="lista">
-    <div class="title">
-      <h2>{{usuario.nombre}}</h2>
-    </div>
     <div class="row">
-      <div class="card card-body">
-        <!-- TODO Diseño de esto -->
-        <ul>
-          <li>Email: {{usuario.email}} </li>
-          <li>ID: {{usuario._id}} </li>
-          <li>Fecha de nacimiento: {{usuario.nacimiento}} </li>
-          <li>Sexo: {{usuario.sexo}} </li>
-          <li>Teléfono: {{usuario.telefono}} </li>
-          <li>Domicilio: {{usuario.domicilio}} </li>
-        </ul>
-        <router-link :to="{name: 'UsuariosEditar', id: usuario._id}">Editar</router-link>
+      <div class="col-6 offset-3">
+        <div class="card" id="info">
+          <div class="card-header">
+            <h3 class="card-title">{{usuario.nombre}}</h3>
+          </div>
+          <div class="card-body">
+            <!-- TODO Diseño de esto -->
+            <ul>
+              <li><strong>Email:</strong> {{usuario.email}} </li>
+              <li><strong>ID:</strong> {{usuario._id}} </li>
+              <li><strong>Teléfono:</strong> {{usuario.telefono}} </li>
+              <li><strong>Domicilio:</strong> {{usuario.domicilio}} </li>
+            </ul>
+            <div class="text-center">
+              <b-button :to="{name: 'UsuariosEditar', id: usuario._id}" class="px-3" variant="primary">Editar</b-button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="title mt-3">
@@ -25,7 +29,7 @@
       class="col-3 py-3 col-lista"
       v-for="mascota in usuario.mascotas" v-bind:key="mascota._id">
         <router-link 
-        :to="{ name: 'UsuariosMascotasEditar', params: { id_mascota: usuario._id, id_usuario: mascota._id  } }" 
+        :to="{ name: 'UsuariosMascotasEditar', params: { id_usuario: usuario._id, id_mascota: mascota._id  } }" 
         class="card card-body h-100">
           {{mascota.nombre}}
         </router-link>
@@ -38,10 +42,7 @@
           </router-link>
         </div>
       </div>
-      </div>
-      <!-- M: {{usuario.mascotas}} -->
-      <!-- <mascotas-usuario :id_usuario="id"></mascotas-usuario> -->
-      <!-- {{usuario._id}} -->
+    </div>
   </div>
 </template>
 
@@ -49,17 +50,12 @@
 
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex';
-import MascotasUsuario from '@/vet/components/MascotasUsuario'
 
 export default {
   name: 'UsuariosVer',
   props: ['id'],
-  components: {
-    'mascotas-usuario': MascotasUsuario,
-  },
   data () {
     return {
-    //   errors: []
     }
   },
   computed: mapState('usuarios', {
@@ -75,7 +71,10 @@ export default {
 </script>
 
 <style>
-.mascotas{
-  /* mt-2l */
+#info .card-body{
+  text-align: left;
+}
+li{
+    list-style-type: none;
 }
 </style>

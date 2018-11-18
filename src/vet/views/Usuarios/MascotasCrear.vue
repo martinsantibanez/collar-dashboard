@@ -11,7 +11,7 @@
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
-                  label="Name">
+                  label="Nombre">
           <b-form-input type="text" id="nombre" v-model.trim="mascota.nombre"></b-form-input>
         </b-form-group>
         <b-form-group
