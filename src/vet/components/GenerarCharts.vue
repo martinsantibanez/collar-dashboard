@@ -37,7 +37,7 @@ export default {
         datasets: [
           {
             fill: false,
-            label: this.tipo,
+            label: this.mayusculasLabel(this.tipo),
             backgroundColor: '#f87979',
             data: this.arrayDATA
           }
@@ -49,6 +49,9 @@ export default {
         array.splice(0, array.length - 10 + 1);
      	}
       return array.push(value);
+    },
+    mayusculasLabel(string){
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
     }
   }
 }

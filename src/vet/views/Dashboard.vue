@@ -1,12 +1,12 @@
 <template>
   <div>
-    Bienvenido {{user.email}}
+    <h2>Bienvenido {{user.email}}</h2>
     <div class="row">
       <div class="col-6">
-        <generar-charts tipo="TEMPERATURA"></generar-charts>
+        <!-- <generar-charts tipo="TEMPERATURA"></generar-charts> -->
       </div>
       <div class="col-6">
-        <generar-charts tipo="PULSO"></generar-charts>
+        <!-- <generar-charts tipo="PULSO"></generar-charts> -->
       </div>
     </div>
 

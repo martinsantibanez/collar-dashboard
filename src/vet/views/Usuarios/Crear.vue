@@ -45,14 +45,14 @@
                   :label-cols="2"
                   breakpoint="md"
                   label="Telefono">
-          <b-form-input type="number" id="role" v-model.trim="usuario.telefono"></b-form-input>
+          <b-form-input type="number" id="telefono" v-model.trim="usuario.telefono"></b-form-input>
         </b-form-group>
         <b-form-group
                   horizontal
                   :label-cols="2"
                   breakpoint="md"
                   label="Domicilio">
-          <b-form-input type="text" id="role" v-model.trim="usuario.domicilio"></b-form-input>
+          <b-form-input type="text" id="domicilio" v-model.trim="usuario.domicilio"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Guardar</b-button>
       </b-form>

@@ -15,7 +15,8 @@
               <li><strong>Sexo:</strong> {{mascota.sexo}} </li>
             </ul>
             <div class="text-center">
-              <b-button :to="{name: 'UsuariosMascotasEditar', id_usuario: id_usuario, id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
+              <b-button v-if="id_usuario" :to="{name: 'UsuariosMascotasEditar', id_usuario: id_usuario, id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
+                <b-button v-else :to="{name: 'MascotasEditar', id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
               <b-button @click="eliminarMascota(mascota._id)" class="ml-3" variant="danger">Eliminar</b-button>
             </div>
           </div>
@@ -31,6 +32,7 @@
         <div class="col-6">
           <!-- TODO bindear id mascota -->
           <generar-charts tipo="TEMPERATURA"></generar-charts>
+          <!-- <b-button :to></b-button> -->
         </div>
         <div class="col-6">
           <generar-charts tipo="PULSO"></generar-charts>

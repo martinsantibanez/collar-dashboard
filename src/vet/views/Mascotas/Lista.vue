@@ -9,8 +9,9 @@
       v-for="mascota in mascotas" v-bind:key="mascota._id">
         <router-link 
         :to="{ name: 'MascotasVer', params: { id_mascota: mascota._id } }" 
-        class="card card-body h-100">
+        class="card card-body h-100 mascota">
           {{mascota.nombre}}
+          <span class="mt-3"><i class="fas fa-user fa-sm mr-1"></i> {{mascota.dueno.nombre}}</span>
         </router-link>
       </div>
       <!-- <div class="col-3 py-3 col-lista">
@@ -49,5 +50,11 @@ export default {
 </script>
 
 <style>
-
+.mascota span{
+  color: #858D91;
+  font-size: 12pt;
+}
+.col-lista .card:hover span{
+  color: #fff;
+}
 </style>

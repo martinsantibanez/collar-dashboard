@@ -67,7 +67,8 @@ export default {
           })
         else
           this.$router.push({
-            name: 'Mascotas'
+            name: 'MascotasVer',
+            id_mascota: this.id_mascota
           });
       } catch(e) {
         console.log(e)
