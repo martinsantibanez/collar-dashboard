@@ -13,6 +13,12 @@
   color: #2c3e50;
   transition: ease 0.2s;
 }
+.titulo{
+  margin-bottom: 20px;
+}
+.contenido {
+  background-color: #fff;
+}
 #nav {
   padding: 30px;
 }

@@ -4,7 +4,7 @@ import UsuariosLista from './views/Usuarios/Lista'
 import UsuariosCrear from './views/Usuarios/Crear'
 import UsuariosVer from './views/Usuarios/Ver'
 import UsuariosEditar from './views/Usuarios/Editar'
-import UsuariosMascotas from './views/Usuarios/Mascotas'
+import UsuariosMascotas from './components/MascotasUsuario'
 import UsuariosMascotasCrear from './views/Usuarios/MascotasCrear'
 
 import MascotasLista from './views/Mascotas/Lista'
@@ -46,7 +46,7 @@ export default [
                 component: UsuariosEditar,
             },
             {
-                path: 'usuarios/:id/mascotas',
+                path: 'usuarios/:id_usuario/mascotas',
                 props: true,
                 name: 'UsuariosMascotas',
                 component: UsuariosMascotas,

@@ -1,13 +1,10 @@
 <template>
   <div>
-    <b-badge>{{msg}}</b-badge>
-    <h1>Mascotas de {{usuario.nombre}}</h1>
-    <b-table responsive hover :items="mascotas" :fields="tableFields">
-      <template slot="accion" slot-scope="data">
-        <b-button :to="{ name: 'UsuariosMascotasEditar', params: { id: data.item._id } }">Editar</b-button>
-        <!-- <b-button @click="deleteUsuario(data.item._id)">Eliminar</b-button> -->
-      </template>
-    </b-table>
+    <div v-for="mascota in mascotas" :key="mascota._id">
+      <!-- <router-link :to="{name: MascotasVer, id: mascota._id}"> -->
+        {{mascota.nombre}}
+      <!-- </router-link> -->
+    </div>
     <b-button :to="{name: 'UsuariosMascotasCrear'}" variant="success">Agregar</b-button>
   </div>
 </template>
@@ -16,8 +13,8 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'Usuarios',
-  props: ['id'],
+  name: 'MascotasUsuario',
+  props: ['id_usuario'],
   data () {
     return {
       tableFields: ['nombre', 'raza', 'nacimiento', 'accion'],
@@ -28,10 +25,10 @@ export default {
     mascotas: state => state.mascotas,
     usuario: state => state.usuario
   }),
-  created(){
-    // console.log(this.id);
-    this.getMascotas(this.id);
-    this.getUsuarioById(this.id);
+  mounted(){
+    console.log(this.id_usuario);
+    this.getMascotas(this.id_usuario);
+    this.getUsuarioById(this.id_usuario);
   },
   methods: {
     ...mapActions('usuarios', ['getMascotas', 'getUsuarioById']),

@@ -31,6 +31,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+/* Estilos globales para el vet */
 body {
   font-size: .875rem;
   background-color: #FCFCFC !important;
@@ -44,4 +45,34 @@ body {
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
+.col-lista .card{
+  background-color: #fff;
+  /* box-shadow: 2px 2px 6px rgba(0, 0, 0, .1); */
+  /* border-radius: 20px; */
+
+  color: #000;
+  font-weight: 300;
+  font-size: 14pt;
+}
+.col-lista .card:hover{
+  text-decoration: none;
+  color: #4487FA;
+  
+}
+.card.agregar{
+  background-color: #00D664;
+  transition: ease 0.2s;
+}
+.card.agregar:hover{
+  background-color: #04EC71;
+}
+.card.agregar a{
+  font-weight: 600;
+  /* font-family: ''; */
+  color: #fff;
+}
+.card.agregar a:hover {
+  color: #fff;
+  text-decoration: none;
+}
 </style>
