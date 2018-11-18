@@ -69,6 +69,12 @@ export default [
                 component: MascotasLista,
             },
             {
+                path: 'mascotas/:id_mascota',
+                props:true,
+                name: 'MascotasVer',
+                component: MascotasVer
+            },
+            {
                 path: 'mascotas/:id_mascota/editar',
                 name: 'MascotasEditar',
                 props: true,
