@@ -22,18 +22,26 @@
         </div>
       </div>
     </div>
-    <div class="title mt-3">
+    <div class="title mt-4">
       <h2>Emparejado con collar <code>asdf1234</code></h2>
-      Cambiar
+      <!-- Cambiar -->
     </div>
-    <div class="row">
-        TODO: Aca van los Graficossssssss
+    <div class="card card-body">
+      <div class="row">
+        <div class="col-6">
+          <!-- TODO bindear id mascota -->
+          <generar-charts tipo="TEMPERATURA"></generar-charts>
+        </div>
+        <div class="col-6">
+          <generar-charts tipo="PULSO"></generar-charts>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
+import GenerarCharts from '@/vet/components/GenerarCharts'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex';
 
@@ -44,6 +52,7 @@ export default {
     return {
     }
   },
+  components: { GenerarCharts },
   computed: mapState('mascotas', {
     mascota: state => state.mascota
   }),

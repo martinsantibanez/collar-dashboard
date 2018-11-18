@@ -1,5 +1,5 @@
 <template>
-  <nav class="col-md-2 d-none d-md-block sidebar">
+  <nav class="col-md-2 d-none d-md-block sidebar sidebar-sticky">
       <router-link :to="{name: 'Dashboard'}" class="navbar-brand col-12">SmartCan</router-link>
       <ul class="nav flex-column">
         <li class="nav-item" v-for="item in sidebarItems" :key="item.title">
@@ -47,7 +47,7 @@ export default {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
-  font-family: 'Korolev';
+  font-family: 'Korolev', 'Open Sans', Helvetica, Arial, sans-serif;
   /* background-color: rgba(0, 0, 0, .25); */
   color: #4487FA;
   /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25); */
@@ -58,8 +58,8 @@ export default {
 .sidebar-sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 48px; /* Height of navbar */
-  height: calc(100vh - 60px);
+  top: 0;
+  height: 100vh;
   padding-top: .5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
