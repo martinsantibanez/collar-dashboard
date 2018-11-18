@@ -36,7 +36,10 @@
             display: true
           },
           responsive: true,
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
+          tooltips: {
+            enabled: false
+          }
         }
       }
     },

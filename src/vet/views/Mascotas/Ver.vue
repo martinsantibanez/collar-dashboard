@@ -32,10 +32,11 @@
         <div class="col-6">
           <!-- TODO bindear id mascota -->
           <generar-charts tipo="TEMPERATURA"></generar-charts>
-          <!-- <b-button :to></b-button> -->
+          <router-link class="btn btn-outline-danger mt-3" :to="{name: 'Dashboard'}"><i class="fas fa-exclamation-triangle"></i> Alertar temperatura</router-link>
         </div>
         <div class="col-6">
           <generar-charts tipo="PULSO"></generar-charts>
+          <router-link class="btn btn-outline-danger mt-3" :to="{name: 'Dashboard'}"><i class="fas fa-exclamation-triangle"></i> Alertar por pulso</router-link>
         </div>
       </div>
     </div>
