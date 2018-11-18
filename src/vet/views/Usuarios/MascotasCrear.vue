@@ -57,7 +57,7 @@ export default {
     async onSubmit (evt) {
       evt.preventDefault()
       try {
-        var created = await this.addMascota({id: this.id_usuario, mascota: this.mascota});
+        var created = await this.addMascota({id_usuario: this.id_usuario, mascota: this.mascota});
         console.log(created._id);
         this.$router.push({
           name: 'UsuariosVer',

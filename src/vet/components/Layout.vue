@@ -56,7 +56,10 @@ body {
 }
 .col-lista .card:hover{
   text-decoration: none;
-  color: #4487FA;
+  /* color: #4487FA; */
+  color: #fff;
+  background-color: #4487FA;
+
   
 }
 .card.agregar{
