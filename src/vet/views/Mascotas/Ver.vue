@@ -18,6 +18,7 @@
               <b-button v-if="id_usuario" :to="{name: 'UsuariosMascotasEditar', id_usuario: id_usuario, id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
                 <b-button v-else :to="{name: 'MascotasEditar', id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
               <b-button @click="eliminarMascota(mascota._id)" class="ml-3" variant="danger">Eliminar</b-button>
+              <!-- TODO confirmacion eliminar -->
             </div>
           </div>
         </div>
@@ -46,9 +47,27 @@
     <!-- <div class="card card-body mb-5"> -->
       <div class="row">
         <div v-for="alerta in mascota.alertas" :key="alerta._id"  class="col-4 py-3 alerta">
-          <router-link :to="{name: 'Dashboard'}" class="card card-body bg-warning">
-            {{ alerta.tipo }}
-          </router-link>
+          <!-- <router-link :to="{name: 'Dashboard'}" class="card" :class="{'bg-warning': !alerta.leida}"> -->
+          <div class="card" :class="{'bg-warning': !alerta.leida}">
+            <div class="card-header">
+              <div><strong>{{ alerta.tipo }}</strong></div>
+              <span class="badge" 
+              :class="{'badge-danger': alerta.gravedad=='Grave', 'badge-primary': alerta.gravedad=='Moderada', 'badge-light': alerta.gravedad=='Leve'}">
+                {{ alerta.gravedad }}
+              </span>
+            </div>
+            <div class="card-body">
+              <div>{{ alerta.descripcion }}</div>
+            <div v-if="!alerta.leida">
+              <b-btn variant="light" class="mt-4 btn-sm">Cancelar alerta</b-btn>
+            </div>
+            </div>
+            <div class="card-footer" v-if="alerta.leida">
+              <div>Leida el {{ alerta.fechaLeida }}</div>
+              <!-- TODO formato fecha -->
+            </div>
+          </div>
+            <!-- <div>{{alerta}}</div> -->
         </div>
       </div>
     <!-- </div> -->
@@ -99,11 +118,8 @@ export default {
 li{
     list-style-type: none;
 }
-.alerta a{
+.alerta .bg-warning{
   color: #fff;
 }
-.alerta:hover a{
-  color: #fff;
-  text-decoration: none;
-}
+
 </style>

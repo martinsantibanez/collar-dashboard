@@ -8,7 +8,7 @@
   <div class="row">
       <div class="col-6">
         <!-- TODO id mascota -->
-        <generar-charts tipo="Temperatura"></generar-charts>
+        <generar-charts :tipo="tipo"></generar-charts>
       </div>
       <div class="col-6 card">
           <div class="card-body">
