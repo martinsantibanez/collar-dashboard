@@ -38,6 +38,10 @@ export default {
     async deleteMascota({commit, dispatch}, id){
       await Api().delete('mascotas/'+id);
       dispatch('getMascotas');
+    },
+    async createAlerta({commit, dispatch}, payload){
+      await Api().post('mascotas/'+payload.id_mascota+'/alertas', payload.alerta);
+      // commit()
     }
   }
 }

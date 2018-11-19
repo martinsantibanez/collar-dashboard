@@ -9,6 +9,7 @@ import UsuariosMascotasCrear from './views/Usuarios/MascotasCrear'
 import MascotasLista from './views/Mascotas/Lista'
 import MascotasEditar from './views/Mascotas/Editar'
 import MascotasVer from './views/Mascotas/Ver'
+import MascotasAlertar from './views/Mascotas/Alertar'
 
 export default [
     {
@@ -64,6 +65,12 @@ export default [
                 component: MascotasEditar,
             },
             {
+                path: 'usuarios/:id_usuario/mascotas/:id_mascota/alertar/:tipo',
+                props: true,
+                name: 'UsuariosMascotasAlertar',
+                component: MascotasAlertar
+            },
+            {
                 path: 'mascotas',
                 name: 'Mascotas',
                 component: MascotasLista,
@@ -79,6 +86,12 @@ export default [
                 name: 'MascotasEditar',
                 props: true,
                 component: MascotasEditar,
+            },
+            {
+                path: 'mascotas/:id_mascota/alertar/:tipo',
+                props: true,
+                name: 'MascotasAlertar',
+                component: MascotasAlertar
             },
             
         ]

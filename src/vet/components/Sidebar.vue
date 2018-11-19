@@ -1,6 +1,6 @@
 <template>
   <nav class="col-md-2 d-none d-md-block sidebar sidebar-sticky">
-      <router-link :to="{name: 'Dashboard'}" class="navbar-brand col-12">SmartCan</router-link>
+      <router-link :to="{name: 'Dashboard'}" class="navbar-brand col-12">FutureCan</router-link>
       <ul class="nav flex-column">
         <li class="nav-item" v-for="item in sidebarItems" :key="item.title">
           <router-link class="nav-link" :to="item.route" active-class="active">

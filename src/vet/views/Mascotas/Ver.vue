@@ -25,21 +25,33 @@
     </div>
     <div class="title mt-4">
       <h2>Emparejado con collar <code>asdf1234</code></h2>
-      <!-- Cambiar -->
+      <!-- TODO: Emparejar con collar -->
     </div>
     <div class="card card-body">
       <div class="row">
         <div class="col-6">
           <!-- TODO bindear id mascota -->
-          <generar-charts tipo="TEMPERATURA"></generar-charts>
-          <router-link class="btn btn-outline-danger mt-3" :to="{name: 'Dashboard'}"><i class="fas fa-exclamation-triangle"></i> Alertar temperatura</router-link>
+          <generar-charts tipo="Temperatura"></generar-charts>
+          <router-link class="btn btn-outline-danger mt-3" :to="{ name: 'MascotasAlertar', params: {id_mascota: mascota._id, tipo: 'Temperatura'} }"><i class="fas fa-exclamation-triangle"></i> Alertar por temperatura</router-link>
         </div>
         <div class="col-6">
-          <generar-charts tipo="PULSO"></generar-charts>
-          <router-link class="btn btn-outline-danger mt-3" :to="{name: 'Dashboard'}"><i class="fas fa-exclamation-triangle"></i> Alertar por pulso</router-link>
+          <generar-charts tipo="Pulso"></generar-charts>
+          <router-link class="btn btn-outline-danger mt-3" :to="{ name: 'MascotasAlertar', params: {id_mascota: mascota._id, tipo: 'Pulso'} }"><i class="fas fa-exclamation-triangle"></i> Alertar por pulso</router-link>
         </div>
       </div>
     </div>
+    <div class="title mt-4">
+      <h2>Alertas</h2>
+    </div>
+    <!-- <div class="card card-body mb-5"> -->
+      <div class="row">
+        <div v-for="alerta in mascota.alertas" :key="alerta._id"  class="col-4 py-3 alerta">
+          <router-link :to="{name: 'Dashboard'}" class="card card-body bg-warning">
+            {{ alerta.tipo }}
+          </router-link>
+        </div>
+      </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -86,5 +98,12 @@ export default {
 }
 li{
     list-style-type: none;
+}
+.alerta a{
+  color: #fff;
+}
+.alerta:hover a{
+  color: #fff;
+  text-decoration: none;
 }
 </style>

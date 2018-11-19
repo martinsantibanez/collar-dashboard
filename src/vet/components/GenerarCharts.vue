@@ -12,7 +12,7 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Dashboard',
-  props: ['id_mascota', 'tipo'], //tipo: TEMPERATURA o PULSO
+  props: ['id_mascota', 'tipo'], //tipo: Temperatura o Pulso
   data () {
     return {
       msg: 'Welcome to dashboard',
@@ -37,7 +37,7 @@ export default {
         datasets: [
           {
             fill: false,
-            label: this.mayusculasLabel(this.tipo),
+            label: this.tipo,
             backgroundColor: '#f87979',
             data: this.arrayDATA
           }
@@ -50,9 +50,6 @@ export default {
      	}
       return array.push(value);
     },
-    mayusculasLabel(string){
-      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
-    }
   }
 }
 </script>

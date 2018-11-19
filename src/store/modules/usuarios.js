@@ -49,7 +49,7 @@ export default {
     },
     async addMascota({commit}, payload){
       const response = await Api().post('usuarios/'+payload.id_usuario+'/mascotas', payload.mascota);
-      // console.log(response);
+      
       return response.data;
 
     }
