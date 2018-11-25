@@ -8,6 +8,7 @@
 /* eslint-disable */
 import Chart from './Chart'
 import io from 'socket.io-client';
+import Socket from './Socket.js';
 import { mapState } from 'vuex';
 
 export default {
@@ -18,7 +19,7 @@ export default {
       msg: 'Welcome to dashboard',
       arrayDATA: [],
       datacollection: null,
-      socket : io('192.168.0.15:4000')
+      socket : io(Socket.URL)
     }
   },
   computed: mapState('auth', {

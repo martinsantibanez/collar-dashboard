@@ -1,13 +1,10 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex xs12>
-        <h2 class="headline mb-0">Bienvenido {{user.nombre}}</h2>
-        <v-avatar color="red">
-          <span class="white--text headline">U</span>
-        </v-avatar>
+      <v-flex xs12 class="text-left">
+        <h2 class="mb-3">Bienvenido {{user.nombre}}</h2>
         <div v-for="mascota in mascotas" :key="mascota._id" class="mb-4">
-            <h3 class="headline mb-0 text-left">{{mascota.nombre}}</h3>
+            <h3 class="headline mb-3 text-left"><v-icon color="black">pets</v-icon> {{mascota.nombre}}</h3>
             <v-tabs
             v-model="mascota.active"
             color="cyan"
