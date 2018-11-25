@@ -3,6 +3,8 @@ import Resumen from './views/Resumen';
 import Perfil from './views/Perfil';
 import Mascotas from './views/Mascotas';
 import Alertas from './views/Alertas';
+import Veterinarios from './views/Veterinarios';
+import Sync from './views/Sync';
 
 export default [
     {
@@ -28,9 +30,19 @@ export default [
                 component: Mascotas
             },
             {
+                path: 'mascotas/:id/sync',
+                name: 'Sync',
+                component: Sync
+            },
+            {
                 path: 'alertas',
                 name: 'MisAlertas',
                 component: Alertas
+            },
+            {
+                path: 'veterinarios',
+                name: 'Veterinarios',
+                component: Veterinarios
             }
         ]
     },

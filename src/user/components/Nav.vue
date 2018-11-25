@@ -34,6 +34,7 @@ export default {
         { title: 'Perfil', route: { name: 'Perfil' }, icon: 'person' },
         { title: 'Mascotas', route: { name: 'MisMascotas' }, icon: 'pets' },
         { title: 'Alertas', route: { name: 'MisAlertas' }, icon: 'warning' },
+        { title: 'Veterinarios', route: { name: 'Veterinarios' }, icon: 'healing' },
         { title: 'Logout', route: { name: 'Logout' }, icon: 'exit_to_app' },
       ],
       drawer: null
