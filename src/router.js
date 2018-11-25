@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from './views/Home.vue'
 import vetRoutes from './vet/router.js';
+import userRoutes from './user/router.js';
 
 import Index from './Index';
 import Login from './Login';
@@ -14,7 +15,8 @@ const baseRoutes = [
   {
     path: '/',
     name: 'Index',
-    component: Index
+    // component: Index,
+    redirect: { name: 'Login'}
   },
   {
     path: '/login',
@@ -28,7 +30,7 @@ const baseRoutes = [
     component: Logout
   }
 ];
-const routes = baseRoutes.concat(vetRoutes);
+const routes = baseRoutes.concat(vetRoutes, userRoutes);
 const router = new Router({
   routes,
 });

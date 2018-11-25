@@ -45,9 +45,9 @@
       <h2>Alertas</h2>
     </div>
     <!-- <div class="card card-body mb-5"> -->
-      <div class="row">
+      <div class="row mb-4">
+        <div v-if="mascota.alertas.length == 0" class="card card-body">No hay alertas.</div>
         <div v-for="alerta in mascota.alertas" :key="alerta._id"  class="col-4 py-3 alerta">
-          <!-- <router-link :to="{name: 'Dashboard'}" class="card" :class="{'bg-warning': !alerta.leida}"> -->
           <div class="card" :class="{'bg-warning': !alerta.leida}">
             <div class="card-header">
               <div><strong>{{ alerta.tipo }}</strong></div>
@@ -96,16 +96,16 @@ export default {
   methods: {
     ...mapActions('mascotas', ['getMascotaById', 'deleteMascota']),
     async eliminarMascota(id){
-        await this.deleteMascota(id);
-        if(this.id_usuario)
-          this.$router.push({
-            name: 'UsuariosVer',
-            id_usuario: this.id_usuario,
-          })
-        else
-          this.$router.push({
-            name: 'Mascotas'
-          });
+      await this.deleteMascota(id);
+      if(this.id_usuario)
+        this.$router.push({
+          name: 'UsuariosVer',
+          id_usuario: this.id_usuario,
+        })
+      else
+        this.$router.push({
+          name: 'Mascotas'
+        });
     }
   }
 }

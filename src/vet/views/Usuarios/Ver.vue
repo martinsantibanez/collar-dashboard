@@ -16,6 +16,8 @@
             </ul>
             <div class="text-center">
               <b-button :to="{name: 'UsuariosEditar', id_usuario: usuario._id}" class="px-3" variant="primary">Editar</b-button>
+              <b-button @click="eliminarUsuario(usuario._id)" class="ml-3" variant="danger">Eliminar</b-button>
+              <!-- TODO confirmacion eliminar -->
             </div>
           </div>
         </div>
@@ -65,7 +67,13 @@ export default {
     this.getUsuarioById(this.id_usuario);
   },
   methods: {
-    ...mapActions('usuarios', ['getUsuarioById'])
+    ...mapActions('usuarios', ['getUsuarioById', 'deleteUsuario']),
+    async eliminarUsuario(id){
+      await this.deleteUsuario(id);
+      this.$router.push({
+        name: 'Usuarios',
+      })
+    }
   }
 }
 </script>

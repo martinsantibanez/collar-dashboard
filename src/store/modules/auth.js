@@ -41,6 +41,12 @@ export default {
     },
     logout({commit}) {
       commit('resetToken');
+    },
+    async getPerfilPropio({commit}){
+      var response = await Api().get('me');
+      console.log(response);
+      commit( 'setUser', {'user': response.data} );
+      return response.data.user;
     }
   }
 }

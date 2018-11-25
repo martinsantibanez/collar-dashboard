@@ -11,7 +11,7 @@
         :to="{ name: 'MascotasVer', params: { id_mascota: mascota._id } }" 
         class="card card-body h-100 mascota">
           {{mascota.nombre}}
-          <span class="mt-3"><i class="fas fa-user fa-sm mr-1"></i> {{mascota.dueno.nombre}}</span>
+          <span class="mt-3" v-if="mascota.dueno"><i class="fas fa-user fa-sm mr-1"></i> {{mascota.dueno.nombre}}</span>
         </router-link>
       </div>
       <!-- <div class="col-3 py-3 col-lista">

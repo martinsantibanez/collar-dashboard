@@ -4,6 +4,18 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  components: {
+  },
+  data () {
+    return {
+      //
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -12,23 +24,5 @@
   text-align: center;
   color: #2c3e50;
   transition: ease 0.2s;
-}
-.titulo{
-  margin-bottom: 20px;
-}
-.contenido {
-  background-color: #fff;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

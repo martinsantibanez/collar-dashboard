@@ -9,7 +9,7 @@ export default () => {
   var headers = {};
   headers = token ? {'Authorization': "Bearer " + token } : {};
   return axios.create({
-    baseURL: 'http://localhost:3000/api/',
+    baseURL: 'http://192.168.0.15:3000/api/',
     headers: headers
   });
 };
