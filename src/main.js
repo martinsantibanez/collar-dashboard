@@ -15,7 +15,7 @@ import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 
 Vue.use(Vuetify)
 
-// TODO Fuente Roboto
+// TODO Importar fuentes
 Vue.config.productionTip = false
 
 new Vue({

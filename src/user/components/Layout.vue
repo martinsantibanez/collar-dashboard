@@ -4,9 +4,9 @@
     <v-content class="mt-3">
       <router-view/>
     </v-content>
-    <v-footer color="indigo" app inset>
+    <!-- <v-footer color="indigo" app inset>
       <span class="white--text">&copy; 2018</span>
-    </v-footer>
+    </v-footer> -->
 
   </v-app>
 </template>

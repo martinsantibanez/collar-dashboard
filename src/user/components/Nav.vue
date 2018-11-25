@@ -31,7 +31,8 @@ export default {
         { title: 'Resumen', route: { name: 'Resumen' }, icon: 'home' },
         // { title: 'Clientes', route: { name: 'Usuarios' }, icon: 'users' },
         // { title: 'Perfil', route: { name: 'Perfil' }, icon: 'home' },
-        { title: 'Perfil', route: { name: 'Perfil' }, icon: 'home' },
+        { title: 'Perfil', route: { name: 'Perfil' }, icon: 'person' },
+        { title: 'Mascotas', route: { name: 'MisMascotas' }, icon: 'pets' },
         { title: 'Logout', route: { name: 'Logout' }, icon: 'exit_to_app' },
       ],
       drawer: null

@@ -1,6 +1,7 @@
 import Layout from './components/Layout';
 import Resumen from './views/Resumen';
 import Perfil from './views/Perfil';
+import Mascotas from './views/Mascotas';
 
 export default [
     {
@@ -19,6 +20,11 @@ export default [
                 path: 'perfil',
                 name: 'Perfil',
                 component: Perfil
+            },
+            {
+                path: 'mascotas',
+                name: 'MisMascotas',
+                component: Mascotas
             }
         ]
     },

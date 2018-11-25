@@ -1,19 +1,20 @@
 import Api from '@/services/Api';
-import VueJwtDecode from 'vue-jwt-decode'
 
-//TODO save in localstorage
 export default {
   namespaced: true,
   state: {
     token: localStorage.getItem('user-token') || '',
-    user: JSON.parse(localStorage.getItem('user')) || {}
+    user: JSON.parse(localStorage.getItem('user')) || {},
+    mascotas: []
+    // user: {}
   },
   getters: {
     isAuthenticated: state => !!state.token,
     role: state => state.user.role,
     token(state) {
       return state.token;
-    }
+    },
+    user: state => state.user
   },
   mutations: {
     setToken(state, payload) {
@@ -29,6 +30,9 @@ export default {
       localStorage.removeItem('user'); 
       state.token = '';
       state.user = {};
+    },
+    setMascotas(state, payload) {
+      state.mascotas = payload.mascotas;
     }
   },
   actions: {
@@ -44,9 +48,19 @@ export default {
     },
     async getPerfilPropio({commit}){
       var response = await Api().get('me');
-      console.log(response);
+      // console.log(response);
       commit( 'setUser', {'user': response.data} );
       return response.data.user;
+    },
+    async editPerfilPropio({commit}, usuario){
+      var response = await Api().put('me', usuario)
+      return response;
+      // console.log(response); 
+    },
+    async getMascotas({commit}){
+      var response = await Api().get('me/mascotas');
+      commit( 'setMascotas', {'mascotas': response.data} );
+      return response.data;
     }
   }
 }

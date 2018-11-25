@@ -22,14 +22,13 @@
         <b-form-input type="password" id="password" v-model.trim="user.password"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Login</b-button>
-        <b-button type="button" variant="success" @click.stop="register()">Register</b-button>
       </b-form>
     </b-col>
   </b-row>
 </template>
 
 <script>
-
+// TODO diseño login
 import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex';
 
@@ -48,6 +47,7 @@ export default {
       evt.preventDefault()
       try {
         var role = await this.login(this.user);
+        console.log(role);
         this.$router.push('/'+role);
       } catch(e) {
         console.log(e)
