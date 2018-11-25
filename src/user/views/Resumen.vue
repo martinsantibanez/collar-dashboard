@@ -18,9 +18,11 @@
             v-for="alerta in mascota.alertas"
             :key="alerta._id"
             class="text-left"
-            type="info"
+            dismissible
+            :type="alertType(alerta.gravedad)"
+            @input="dismiss(alerta)"
           >
-            <strong>Alerta {{alerta.gravedad}} de {{alerta.tipo}}:</strong> {{alerta.descripcion}}
+            <strong>{{alerta.tipo}} fuera de lo normal:</strong> {{alerta.descripcion}}
           </v-alert>
         </v-card>
       </v-flex>
@@ -50,14 +52,19 @@ export default {
     this.getMascotas();
   },
   methods: {
-    ...mapActions('auth', ['getMascotas']),
+    ...mapActions('auth', ['getMascotas', 'readAlerta']),
     alertType(gravedad){
-      console.log(gravedad);
       if(gravedad == 'Leve') return 'info';
       else if(gravedad == 'Moderada') return 'warning';
       else if(gravedad == 'Grave') return 'error';
       else return '';
+    },
+    async dismiss(alerta){
+      await this.readAlerta(alerta._id);
     }
+  },
+  watch: {
+
   }
 }
 </script>

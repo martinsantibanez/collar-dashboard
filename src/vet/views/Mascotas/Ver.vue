@@ -60,6 +60,7 @@
               <div>{{ alerta.descripcion }}</div>
             <div v-if="!alerta.leida">
               <b-btn variant="light" class="mt-4 btn-sm">Cancelar alerta</b-btn>
+              <!-- TODO cancelar alerta -->
             </div>
             </div>
             <div class="card-footer" v-if="alerta.leida">

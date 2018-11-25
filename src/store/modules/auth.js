@@ -61,6 +61,9 @@ export default {
       var response = await Api().get('me/mascotas');
       commit( 'setMascotas', {'mascotas': response.data} );
       return response.data;
+    },
+    async readAlerta({commit}, id_alerta){
+      var response = await Api().post('alertas/'+id_alerta+'/leer')
     }
   }
 }
