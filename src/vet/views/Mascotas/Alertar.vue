@@ -65,7 +65,7 @@
 
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex';
-import GenerarCharts from '@/vet/components/GenerarCharts';
+import GenerarCharts from '@/common/GenerarCharts';
 
 export default {
   name: 'Alertar',

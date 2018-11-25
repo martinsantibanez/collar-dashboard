@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import GenerarCharts from '@/vet/components/GenerarCharts'
+import GenerarCharts from '@/common/GenerarCharts'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex';
 

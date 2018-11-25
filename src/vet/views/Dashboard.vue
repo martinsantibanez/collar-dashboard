@@ -15,7 +15,7 @@
 
 <script>
 /* eslint-disable */
-import GenerarCharts from '../components/GenerarCharts'
+import GenerarCharts from '@/common/GenerarCharts'
 import io from 'socket.io-client';
 import { mapState } from 'vuex';
 

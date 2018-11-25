@@ -35,8 +35,8 @@
           legend: {
             display: true
           },
-          // responsive: true,
-          responsive: false,
+          responsive: true,
+          // responsive: false,
           maintainAspectRatio: true,
           tooltips: {
             enabled: false

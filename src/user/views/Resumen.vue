@@ -2,29 +2,41 @@
   <v-container grid-list-md>
     <v-layout row wrap>
       <v-flex xs12>
+        <h2 class="headline mb-0">Bienvenido {{user.nombre}}</h2>
         <v-avatar color="red">
           <span class="white--text headline">U</span>
         </v-avatar>
-        <h2 class="headline mb-0">Bienvenido {{user.nombre}}</h2>
-        <v-card v-for="mascota in mascotas" :key="mascota._id" class="mb-4">
-          <v-card-title primary-title>
-            <h3 class="headline mb-0">{{mascota.nombre}}</h3>
-          </v-card-title>
-          <v-card-text class="text-left">
-            TODO: ACA VA EL Grafico
-          </v-card-text>
-          <v-alert
-            :value="true"
-            v-for="alerta in mascota.alertas"
-            :key="alerta._id"
-            class="text-left"
-            dismissible
-            :type="alertType(alerta.gravedad)"
-            @input="dismiss(alerta)"
-          >
-            <strong>{{alerta.tipo}} fuera de lo normal:</strong> {{alerta.descripcion}}
-          </v-alert>
-        </v-card>
+        <div v-for="mascota in mascotas" :key="mascota._id" class="mb-4">
+            <h3 class="headline mb-0 text-left">{{mascota.nombre}}</h3>
+            <v-tabs
+            v-model="mascota.active"
+            color="cyan"
+            dark
+            slider-color="yellow"
+            >
+              <v-tab ripple>
+                Temperatura
+              </v-tab>
+              <v-tab ripple>
+                Pulso
+              </v-tab>
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text>
+                    <generar-charts tipo="Temperatura"></generar-charts>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text>
+                    <generar-charts tipo="Pulso"></generar-charts>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+            </v-tabs>
+          <lista-alertas :alertas="mascota.alertas"></lista-alertas>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -32,22 +44,23 @@
 
 <script>
 /* eslint-disable */
-// import GenerarCharts from '../components/GenerarCharts'
+import GenerarCharts from '@/common/GenerarCharts'
 // import io from 'socket.io-client';
 import { mapState, mapActions } from 'vuex';
-
+import ListaAlertas from '../components/ListaAlertas';
 
 export default {
   name: 'Dashboard',
   data () {
     return {
+      active: null
     }
   },
   computed: mapState('auth', {
     user: state => state.user,
     mascotas: state => state.mascotas
   }),
-//   components: {GenerarCharts},
+  components: { ListaAlertas, GenerarCharts },
   mounted(){
     this.getMascotas();
   },
