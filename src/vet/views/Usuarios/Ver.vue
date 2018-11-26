@@ -16,8 +16,9 @@
             </ul>
             <div class="text-center">
               <b-button :to="{name: 'UsuariosEditar', id_usuario: usuario._id}" class="px-3" variant="primary">Editar</b-button>
-              <b-button @click="eliminarUsuario(usuario._id)" class="ml-3" variant="danger">Eliminar</b-button>
-              <!-- TODO confirmacion eliminar -->
+              <confirmar @confirmar="eliminarUsuario(usuario._id)">
+                <b-button slot="boton" class="ml-3" variant="danger">Eliminar</b-button>
+              </confirmar>
             </div>
           </div>
         </div>
@@ -52,12 +53,15 @@
 
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex';
+import Confirmar from '@/vet/components/Confirmar';
 
 export default {
   name: 'UsuariosVer',
   props: ['id_usuario'],
+  components: { Confirmar },
   data () {
     return {
+      confirmarEliminar: false
     }
   },
   computed: mapState('usuarios', {

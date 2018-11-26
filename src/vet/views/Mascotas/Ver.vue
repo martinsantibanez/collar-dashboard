@@ -17,7 +17,9 @@
             <div class="text-center">
               <b-button v-if="id_usuario" :to="{name: 'UsuariosMascotasEditar', id_usuario: id_usuario, id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
                 <b-button v-else :to="{name: 'MascotasEditar', id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
-              <b-button @click="eliminarMascota(mascota._id)" class="ml-3" variant="danger">Eliminar</b-button>
+              <confirmar @confirmar="eliminarMascota(mascota._id)">
+                <b-button slot="boton" class="ml-3" variant="danger">Eliminar</b-button>
+              </confirmar>
               <!-- TODO confirmacion eliminar -->
             </div>
           </div>
@@ -46,7 +48,7 @@
     </div>
     <!-- <div class="card card-body mb-5"> -->
       <div class="row mb-4">
-        <div v-if="mascota.alertas.length == 0" class="card card-body">No hay alertas.</div>
+        <div v-if="!mascota.alertas || mascota.alertas.length == 0" class="card card-body">No hay alertas.</div>
         <div v-for="alerta in mascota.alertas" :key="alerta._id"  class="col-4 py-3 alerta">
           <div class="card" :class="{'bg-warning': !alerta.leida}">
             <div class="card-header">
@@ -79,15 +81,16 @@
 import GenerarCharts from '@/common/GenerarCharts'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex';
+import Confirmar from '@/vet/components/Confirmar';
 
 export default {
   name: 'MascotasVer',
   props: ['id_usuario', 'id_mascota'],
+  components: { GenerarCharts, Confirmar },
   data () {
     return {
     }
   },
-  components: { GenerarCharts },
   computed: mapState('mascotas', {
     mascota: state => state.mascota
   }),

@@ -13,6 +13,7 @@
 
 <script>
 import Nav from './Nav';
+import { mapActions } from 'vuex';
   export default {
     name: 'UserLayout',
     components: {
@@ -22,7 +23,13 @@ import Nav from './Nav';
       showNavigation: false,
       showSidepanel: false,
       drawer: null
-    })
+    }),
+    methods: {
+      ...mapActions('auth', ['getPerfilPropio']),
+    },
+    created(){
+      this.getPerfilPropio();
+    },
   }
 </script>
 

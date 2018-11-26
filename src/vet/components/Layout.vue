@@ -15,11 +15,18 @@
 <script>
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import { mapActions } from 'vuex';
 export default {
   name: 'VetLayout',
   components: {
     'Sidebar': Sidebar,
     'Navbar': Navbar
+  },
+  methods: {
+    ...mapActions('auth', ['getPerfilPropio']),
+  },
+  created(){
+    this.getPerfilPropio();
   },
   data () {
     return {

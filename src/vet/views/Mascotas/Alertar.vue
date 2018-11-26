@@ -45,7 +45,7 @@
                   :label-cols="3"
                   breakpoint="md"
                   label="Descripción">
-          <b-form-textarea id="descripcion" v-model.trim="alerta.descripcion" :rows="7"></b-form-textarea>
+          <b-form-textarea id="descripcion" v-model.trim="alerta.descripcion" :rows="7" required></b-form-textarea>
         </b-form-group>
 
         <b-button type="submit" variant="primary">Enviar</b-button>
@@ -68,7 +68,7 @@ export default {
   props: ['id_mascota', 'tipo', 'id_usuario'],
   data () {
     return {
-      alerta: {},
+      alerta: { gravedad: 'Moderada' },
       errors: [],
       titulo: "Crear nueva alerta",
       gravedades: [
@@ -93,25 +93,21 @@ export default {
     ...mapActions('mascotas', ['getMascotaById', 'createAlerta']),
     async onSubmit (evt) {
       evt.preventDefault()
-      try {
-        this.alerta.veterinario = this.user._id;
-        this.alerta.tipo = this.tipo;
-        await this.createAlerta({id_mascota: this.id_mascota, alerta: this.alerta});
-        if(this.id_usuario)
-          this.$router.push({
-            name: 'UsuariosMascotasVer',
-            id_usuario: this.id_usuario,
-            id_mascota: this.id_mascota
-          })
-        else
-          this.$router.push({
-            name: 'MascotasVer',
-            id_mascota: this.id_mascota
-          });
-      } catch(e) {
-        console.log(e)
-        this.errors.push(e)
-      }
+      this.alerta.veterinario = this.user._id;
+      // TODO MOVER ESTO al store
+      this.alerta.tipo = this.tipo;
+      await this.createAlerta({id_mascota: this.id_mascota, alerta: this.alerta});
+      if(this.id_usuario)
+        this.$router.push({
+          name: 'UsuariosMascotasVer',
+          id_usuario: this.id_usuario,
+          id_mascota: this.id_mascota
+        })
+      else
+        this.$router.push({
+          name: 'MascotasVer',
+          id_mascota: this.id_mascota
+        });
     }
   }
 }

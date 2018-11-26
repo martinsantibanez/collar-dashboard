@@ -26,6 +26,6 @@ export default function apiSetup() {
       store.dispatch('auth/logout');
       router.push({name: 'Login'});
     }
-    return true;
+    return Promise.reject(error);
   })
 }
