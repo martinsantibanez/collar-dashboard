@@ -14,7 +14,7 @@ export default {
         //console.log(this.$store);
         await this.$store.dispatch('auth/logout');
         // console.log(this.$router);
-        this.$router.go('/');
+        this.$router.push('/');
     }
 }
 </script>

@@ -5,11 +5,6 @@
   </div>
   <b-row class="">
     <b-col cols="8" offset="2" class="card card-body">
-      <div v-if="errors && errors.length">
-        <div v-for="error of errors" :key="error.message">
-          <b-alert show>{{error.message}}</b-alert>
-        </div>
-      </div>
       <b-form @submit="onSubmit">
         <b-form-group
                   horizontal
@@ -30,7 +25,7 @@
                   :label-cols="2"
                   breakpoint="md"
                   label="Nombre">
-          <b-form-input type="text" id="name" v-model.trim="usuario.nombre"></b-form-input>
+          <b-form-input type="text" id="name" v-model.trim="usuario.nombre" required></b-form-input>
         </b-form-group>
         <!-- <b-form-group
                   horizontal

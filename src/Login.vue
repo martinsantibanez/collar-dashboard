@@ -1,34 +1,32 @@
 <template>
-  <b-row class="justify-content-md-center">
-    <b-col cols="6">
-      <div v-if="errors && errors.length">
-        <div v-for="error of errors" :key="error.message">
-          <b-alert show>{{error.message}}</b-alert>
-        </div>
-      </div>
-      <b-form @submit="onSubmit">
-        <b-form-group
-                  horizontal
-                  :label-cols="4"
-                  breakpoint="md"
-                  label="Enter Username">
-          <b-form-input id="email" v-model.trim="user.email"></b-form-input>
-        </b-form-group>
-        <b-form-group
-                  horizontal
-                  :label-cols="4"
-                  breakpoint="md"
-                  label="Enter Password">
-        <b-form-input type="password" id="password" v-model.trim="user.password"></b-form-input>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Login</b-button>
-      </b-form>
-    </b-col>
-  </b-row>
+  <v-container>
+    <v-layout row class="text-xs-center">
+      <v-flex xs10 md4 offset-md4 offset-xs1>
+        <v-card>
+          <v-card-title primary-title>
+            <v-img
+              :src="require('@/assets/logo.png')"
+              contain
+            >
+            </v-img>
+          </v-card-title>
+          <v-flex md></v-flex>
+          <v-form @submit="onSubmit">
+          <v-card-text>
+          <v-text-field prepend-icon="person" name="Email" label="Email" v-model="user.email" required></v-text-field>
+          <v-text-field prepend-icon="lock" name="Password" label="Password" type="password" v-model="user.password" required></v-text-field>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn primary large block color="pink" dark type="submit">Login</v-btn>
+          </v-card-actions>
+          </v-form>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-// TODO diseño login
 import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex';
 
@@ -45,14 +43,10 @@ export default {
     ...mapGetters('auth', ['role']),
     async onSubmit (evt) {
       evt.preventDefault()
-      try {
-        var role = await this.login(this.user);
-        console.log(role);
+      await this.login(this.user);
+      let role = this.role();
+      if(role)
         this.$router.push('/'+role);
-      } catch(e) {
-        console.log(e)
-        this.errors.push(e)
-      }
     },
     register () {
       this.$router.push({

@@ -12,11 +12,6 @@
       </div>
       <div class="col-6 card">
           <div class="card-body">
-          <div v-if="errors && errors.length">
-        <div v-for="error of errors" :key="error.message">
-          <b-alert show>{{error.message}}</b-alert>
-        </div>
-      </div>
       <b-form @submit="onSubmit">
         <b-form-group
                   horizontal

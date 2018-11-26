@@ -13,18 +13,19 @@ export default function apiSetup() {
   }, function(err) {
       return Promise.reject(err);
   });
+  // error handler
   axios.interceptors.response.use(function(response) {
     return response;
   }, function(error){
-    // console.log("atrapado");
-    // console.log(JSON.stringify(error));
-    // console.log(error.response);
-    if(error.response.status == 403 || error.response.status == 401){
-      // console.log(router.push);
-      // console.log(router.push({name: 'Login'}));
-      localStorage.removeItem('token');
+    var errorResponse = error.response
+    // Si viene mensaje mostrar el error:
+    if(errorResponse.data.message) store.dispatch('error/error', errorResponse.data.message);
+
+    if(errorResponse.status == 403 || errorResponse.status == 401){
+      // Si no tiene permiso deslogear y llevarlo al login:
+      store.dispatch('auth/logout');
       router.push({name: 'Login'});
     }
-    return error;
+    return true;
   })
 }

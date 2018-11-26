@@ -40,10 +40,13 @@ export default {
   actions: {
     async login({commit}, user){
       var response = await axios.post('login/', user);
-      var token = response.data.token;
-      commit('setToken', {'token': token});
-      commit('setUser', {'user': response.data.user});
-      return response.data.user.role;
+      // console.log(response);
+      if(response.data){
+        var token = response.data.token;
+        commit('setToken', {'token': token});
+        commit('setUser', {'user': response.data.user});
+        return response.data.user.role;
+      }
     },
     logout({commit}) {
       commit('resetToken');

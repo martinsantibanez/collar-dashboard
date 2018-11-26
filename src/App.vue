@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <router-view/>
+    <error></error>
   </div>
 </template>
 
 <script>
+import Error from './Error';
 export default {
   name: 'App',
   components: {
+    Error
   },
   data () {
     return {
