@@ -1,16 +1,18 @@
-import Api from '@/common/Api';
+import axios from 'axios';
 
 export default {
   namespaced: true,
   state: {
-    token: localStorage.getItem('user-token') || '',
-    user: JSON.parse(localStorage.getItem('user')) || {},
+    token: localStorage.getItem('token') || '',
+    user: {},
     mascotas: []
     // user: {}
   },
   getters: {
     isAuthenticated: state => !!state.token,
-    role: state => state.user.role,
+    role(state, getters){
+      return state.user.role
+    },
     token(state) {
       return state.token;
     },
@@ -18,16 +20,16 @@ export default {
   },
   mutations: {
     setToken(state, payload) {
-      localStorage.setItem('user-token', payload.token);
+      localStorage.setItem('token', payload.token);
       state.token = payload.token;
     },
     setUser(state, payload) {
-      localStorage.setItem('user', JSON.stringify(payload.user));
+      // localStorage.setItem('user', payload.user);
       state.user = payload.user;
     },
     resetToken(state) {
-      localStorage.removeItem('user-token'); 
-      localStorage.removeItem('user'); 
+      localStorage.removeItem('token'); 
+      // localStorage.removeItem('user'); 
       state.token = '';
       state.user = {};
     },
@@ -37,7 +39,7 @@ export default {
   },
   actions: {
     async login({commit}, user){
-      var response = await Api().post('login/', user);
+      var response = await axios.post('login/', user);
       var token = response.data.token;
       commit('setToken', {'token': token});
       commit('setUser', {'user': response.data.user});
@@ -47,23 +49,23 @@ export default {
       commit('resetToken');
     },
     async getPerfilPropio({commit}){
-      var response = await Api().get('me');
+      var response = await axios.get('me');
       // console.log(response);
       commit( 'setUser', {'user': response.data} );
       return response.data.user;
     },
     async editPerfilPropio({commit}, usuario){
-      var response = await Api().put('me', usuario)
+      var response = await axios.put('me', usuario)
       return response;
       // console.log(response); 
     },
     async getMascotas({commit}){
-      var response = await Api().get('me/mascotas');
+      var response = await axios.get('me/mascotas');
       commit( 'setMascotas', {'mascotas': response.data} );
       return response.data;
     },
     async readAlerta({commit}, id_alerta){
-      var response = await Api().post('alertas/'+id_alerta+'/leer')
+      var response = await axios.post('alertas/'+id_alerta+'/leer')
     }
   }
 }

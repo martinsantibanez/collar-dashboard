@@ -16,14 +16,14 @@
                   :label-cols="2"
                   breakpoint="md"
                   label="Email">
-          <b-form-input id="email" v-model.trim="usuario.email"></b-form-input>
+          <b-form-input id="email" v-model.trim="usuario.email" required></b-form-input>
         </b-form-group>
         <b-form-group
                   horizontal
                   :label-cols="2"
                   breakpoint="md"
                   label="Password">
-          <b-form-input type="password" id="password" v-model.trim="usuario.password"></b-form-input>
+          <b-form-input type="password" id="password" v-model.trim="usuario.password" required></b-form-input>
         </b-form-group>
         <b-form-group
                   horizontal
@@ -32,13 +32,13 @@
                   label="Nombre">
           <b-form-input type="text" id="name" v-model.trim="usuario.nombre"></b-form-input>
         </b-form-group>
-        <b-form-group
+        <!-- <b-form-group
                   horizontal
                   :label-cols="2"
                   breakpoint="md"
                   label="Role">
           <b-form-input type="text" id="role" v-model.trim="usuario.role" placeholder="user o vet"></b-form-input>
-        </b-form-group>
+        </b-form-group> -->
         <!-- TODO borrar esto -->
         <b-form-group
                   horizontal

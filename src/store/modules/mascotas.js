@@ -1,4 +1,4 @@
-import Api from '@/common/Api';
+import axios from 'axios';
 import _ from 'lodash';
 
 export default {
@@ -22,25 +22,25 @@ export default {
   },
   actions: {
     async getMascotas({commit}){
-      const response = await Api().get('mascotas');
+      const response = await axios.get('mascotas');
       commit('setAllMascotas', response.data);
     },
     async addMascota({commit}, newMascota){
-      await Api().post('mascotas', newMascota);
+      await axios.post('mascotas', newMascota);
     },
     async getMascotaById({commit}, id){
-      const response = await Api().get('mascotas/'+id);
+      const response = await axios.get('mascotas/'+id);
       commit('setMascota', response.data);
     },
     async editMascota({commit}, editedMascota){
-      await Api().put('mascotas/'+editedMascota._id, editedMascota);
+      await axios.put('mascotas/'+editedMascota._id, editedMascota);
     },
     async deleteMascota({commit, dispatch}, id){
-      await Api().delete('mascotas/'+id);
+      await axios.delete('mascotas/'+id);
       dispatch('getMascotas');
     },
     async createAlerta({commit, dispatch}, payload){
-      await Api().post('mascotas/'+payload.id_mascota+'/alertas', payload.alerta);
+      await axios.post('mascotas/'+payload.id_mascota+'/alertas', payload.alerta);
       // commit()
     }
   }

@@ -1,4 +1,4 @@
-import Api from '@/common/Api';
+import axios from 'axios';
 import _ from 'lodash';
 
 export default {
@@ -26,29 +26,29 @@ export default {
   },
   actions: {
     async getUsuarios({commit}){
-      const response = await Api().get('usuarios');
+      const response = await axios.get('usuarios');
       commit('setAllUsuarios', response.data);
     },
     async addUsuario({commit}, newUsuario){
-      await Api().post('usuarios', newUsuario);
+      await axios.post('usuarios', newUsuario);
     },
     async editUsuario({commit}, editedUsuario){
-      await Api().put('usuarios/'+editedUsuario._id, editedUsuario);
+      await axios.put('usuarios/'+editedUsuario._id, editedUsuario);
     },
     async getUsuarioById({commit}, id){
-      const response = await Api().get('usuarios/'+id);
+      const response = await axios.get('usuarios/'+id);
       commit('setUsuario', response.data);
     },
     async deleteUsuario({commit, dispatch}, id){
-      await Api().delete('usuarios/'+id);
+      await axios.delete('usuarios/'+id);
       dispatch('getUsuarios');
     },
     async getMascotas({commit}, id){
-      const response = await Api().get('usuarios/'+id+'/mascotas');
+      const response = await axios.get('usuarios/'+id+'/mascotas');
       commit('setMascotas', response.data);
     },
     async addMascota({commit}, payload){
-      const response = await Api().post('usuarios/'+payload.id_usuario+'/mascotas', payload.mascota);
+      const response = await axios.post('usuarios/'+payload.id_usuario+'/mascotas', payload.mascota);
       
       return response.data;
 

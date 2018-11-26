@@ -36,15 +36,8 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  var currentUser = localStorage.getItem('user');
-  var role = store.getters['auth/role'];
-  var requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  // const requiresAuth = to.meta.requiresAuth;
-  if (requiresAuth && !currentUser) {
-    next({ name: 'Login' });
-  } else if (!requiresAuth && currentUser) {
-    next('/'+role);
-  } else next();
+  
+  next();
 });
 
 export default router;

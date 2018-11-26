@@ -1,4 +1,4 @@
-import Api from '@/common/Api';
+import axios from 'axios';
 import _ from 'lodash';
 
 export default {
@@ -23,7 +23,7 @@ export default {
   },
   actions: {
     async getAllVeterinarios({commit}){
-      const response = await Api().get('veterinarios');
+      const response = await axios.get('veterinarios');
       commit('setAllVeterinarios', response.data);
     }
   }
