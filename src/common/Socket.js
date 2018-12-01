@@ -1,4 +1,4 @@
-export default {
-    URL: 'localhost:4000'
-    //TODO todas las configuraciones en un archivo
-}
+import io from 'socket.io-client';
+const URL = 'localhost:4000';
+
+export default io(URL);

@@ -43,7 +43,7 @@
     </v-list>
     <v-fab-transition>
       <v-btn
-        color="pink"
+        color="teal"
         dark
         absolute
         bottom
@@ -55,13 +55,13 @@
       </v-btn>
     </v-fab-transition>
     <!-- Dialogo de edicion -->
-    <v-dialog v-model="dialog" max-width="290">
+    <v-dialog v-model="dialog" max-width="300">
       <v-card>
         <v-card-title class="headline">Editar perfil</v-card-title>
           <v-container grid-list-md>
             <v-layout wrap>
               <v-form ref="form" v-model="valid" lazy-validation>
-                <v-flex xs12 sm6 md4>
+                <v-flex xs12>
                   <v-text-field label="Nombre*" v-model="user.nombre" required :rules="nameRules"></v-text-field>
                 </v-flex>
                 <v-flex xs12>

@@ -63,7 +63,7 @@ import { mapActions, mapState } from 'vuex';
 import GenerarCharts from '@/common/GenerarCharts';
 
 export default {
-  name: 'Alertar',
+  name: 'MascotasAlertar',
   components: { GenerarCharts },
   props: ['id_mascota', 'tipo', 'id_usuario'],
   data () {

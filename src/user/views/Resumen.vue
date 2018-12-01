@@ -4,34 +4,18 @@
       <v-flex xs12 class="text-left">
         <h2 class="mb-3">Bienvenido {{user.nombre}}</h2>
         <div v-for="mascota in mascotas" :key="mascota._id" class="mb-4">
-            <h3 class="headline mb-3 text-left"><v-icon color="black">pets</v-icon> {{mascota.nombre}}</h3>
-            <v-tabs
-            v-model="mascota.active"
-            color="cyan"
-            dark
-            slider-color="yellow"
-            >
-              <v-tab ripple>
-                Temperatura
-              </v-tab>
-              <v-tab ripple>
-                Pulso
-              </v-tab>
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <generar-charts tipo="Temperatura"></generar-charts>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <generar-charts tipo="Pulso"></generar-charts>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-            </v-tabs>
+          <v-card>
+            <v-card-title primary-title>
+              <v-avatar color="red" class="mr-3">
+                <span class="white--text headline">{{ mascota.nombre[0] }}</span>
+              </v-avatar>
+              <h3 class="headline mb-0">{{mascota.nombre}}</h3>
+            </v-card-title>
+            <v-card-text>
+              <generar-charts tipo="Pulso"></generar-charts>
+            </v-card-text>
+            <temperatura></temperatura>
+          </v-card>
           <lista-alertas :alertas="mascota.alertas"></lista-alertas>
         </div>
       </v-flex>
@@ -45,6 +29,7 @@ import GenerarCharts from '@/common/GenerarCharts'
 // import io from 'socket.io-client';
 import { mapState, mapActions } from 'vuex';
 import ListaAlertas from '../components/ListaAlertas';
+import Temperatura from '../../common/Temperatura';
 
 export default {
   name: 'Dashboard',
@@ -57,7 +42,7 @@ export default {
     user: state => state.user,
     mascotas: state => state.mascotas
   }),
-  components: { ListaAlertas, GenerarCharts },
+  components: { ListaAlertas, GenerarCharts, Temperatura },
   mounted(){
     this.getMascotas();
   },

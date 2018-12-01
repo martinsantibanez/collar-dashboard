@@ -19,7 +19,7 @@ export default {
       msg: 'Welcome to dashboard',
       arrayDATA: [],
       datacollection: null,
-      socket : io(Socket.URL)
+      socket : Socket
     }
   },
   computed: mapState('auth', {
