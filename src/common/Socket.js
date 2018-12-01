@@ -1,3 +1,4 @@
 export default {
-    URL: '192.168.0.15:4000'
+    URL: 'localhost:4000'
+    //TODO todas las configuraciones en un archivo
 }
