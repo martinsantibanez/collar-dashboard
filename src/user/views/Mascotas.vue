@@ -32,7 +32,7 @@
             <v-list-tile-sub-title>{{ mascota.nacimiento }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile avatar @click="ir({name: 'Sync', params: {id: mascota._id}})">
+        <v-list-tile avatar @click="$router.push({name: 'Sync', params: {id_mascota: mascota._id}})">
           <v-list-tile-avatar>
             <v-icon>settings_input_antenna</v-icon>
           </v-list-tile-avatar>
@@ -76,10 +76,7 @@ export default {
       mascotas: state => state.mascotas
   }),
   methods: {
-    ...mapActions('auth', ['getMascotas']),
-    ir(route){
-      this.$router.push(route);
-    }
+    ...mapActions('auth', ['getMascotas'])
   },
   async created() {
       await this.getMascotas();

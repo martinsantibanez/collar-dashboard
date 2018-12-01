@@ -45,6 +45,9 @@ export default {
     },
     async deleteAlerta({commit, dispatch}, id){
       await axios.delete('alertas/'+id);
+    },
+    async sincronizar({commit, dispatch}, payload){
+      await axios.post('mascotas/'+payload.id_mascota+'/sincronizar', payload)
     }
   }
 }

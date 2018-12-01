@@ -30,8 +30,9 @@ export default [
                 component: Mascotas
             },
             {
-                path: 'mascotas/:id/sync',
+                path: 'mascotas/:id_mascota/sync',
                 name: 'Sync',
+                props: true,
                 component: Sync
             },
             {
