@@ -47,7 +47,10 @@ export default {
       await axios.delete('alertas/'+id);
     },
     async sincronizar({commit, dispatch}, payload){
-      await axios.post('mascotas/'+payload.id_mascota+'/sincronizar', payload)
+      await axios.post('mascotas/'+payload.id_mascota+'/sincronizar', payload);
+    },
+    async eliminarCollar({commit, dispatch}, id){
+      await axios.delete('mascotas/'+id+'/sincronizar');
     }
   }
 }

@@ -40,6 +40,11 @@
             <v-list-tile-title>Sincronizar collar</v-list-tile-title>
             <v-list-tile-sub-title v-if="mascota.collar">Sincronizado con {{ mascota.collar }}</v-list-tile-sub-title>
           </v-list-tile-content>
+          <v-list-tile-action v-if="mascota.collar">
+            <v-btn icon ripple>
+              <v-icon color="grey lighten-1" @click.stop="eliminar(mascota._id)">delete</v-icon>
+            </v-btn>
+          </v-list-tile-action>
         </v-list-tile>
         <v-list-tile avatar @click="">
           <v-list-tile-avatar>
@@ -76,7 +81,12 @@ export default {
       mascotas: state => state.mascotas
   }),
   methods: {
-    ...mapActions('auth', ['getMascotas'])
+    ...mapActions('auth', ['getMascotas']),
+    ...mapActions('mascotas', ['eliminarCollar']),
+    async eliminar(id){
+      await this.eliminarCollar(id);
+      await this.getMascotas();
+    }
   },
   async created() {
       await this.getMascotas();
