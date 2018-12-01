@@ -29,7 +29,7 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'Usuarios',
+  name: 'Clientes',
   data () {
     return {
       tableFields: ['email', 'nombre', 'role', 'accion'],
@@ -40,10 +40,10 @@ export default {
     usuarios: state => state.list
   }),
   created(){
-    this.getUsuarios();
+    this.getClientes();
   },
   methods: {
-    ...mapActions('usuarios', ['deleteUsuario', 'getUsuarios']),
+    ...mapActions('usuarios', ['deleteUsuario', 'getClientes']),
 
   }
 }

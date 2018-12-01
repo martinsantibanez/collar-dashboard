@@ -49,9 +49,11 @@ export default {
     },
     async addMascota({commit}, payload){
       const response = await axios.post('usuarios/'+payload.id_usuario+'/mascotas', payload.mascota);
-      
       return response.data;
-
+    },
+    async getClientes({commit}){
+      const response = await axios.get('clientes');
+      commit('setAllUsuarios', response.data);
     }
   }
 }

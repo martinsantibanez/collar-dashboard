@@ -28,47 +28,47 @@ export default [
                 component: Dashboard
             },
             {
-                path: 'usuarios',
+                path: 'clientes',
                 name: 'Usuarios',
                 component: UsuariosLista,
             },
             {
-                path: 'usuarios/crear',
+                path: 'clientes/crear',
                 name: 'UsuariosCrear',
                 component: UsuariosCrear,
             },
             {
-                path: 'usuarios/:id_usuario',
+                path: 'clientes/:id_usuario',
                 props: true,
                 name: 'UsuariosVer',
                 component: UsuariosVer,
             },
             {
-                path: 'usuarios/:id_usuario/editar',
+                path: 'clientes/:id_usuario/editar',
                 props: true,
                 name: 'UsuariosEditar',
                 component: UsuariosEditar,
             },
             {
-                path: 'usuarios/:id_usuario/mascotas/crear',
+                path: 'clientes/:id_usuario/mascotas/crear',
                 props: true,
                 name: 'UsuariosMascotasCrear',
                 component: UsuariosMascotasCrear,
             },
             {
-                path: 'usuarios/:id_usuario/mascotas/:id_mascota',
+                path: 'clientes/:id_usuario/mascotas/:id_mascota',
                 props: true,
                 name: 'UsuariosMascotasVer',
                 component: MascotasVer,
             },
             {
-                path: 'usuarios/:id_usuario/mascotas/:id_mascota/editar',
+                path: 'clientes/:id_usuario/mascotas/:id_mascota/editar',
                 props: true,
                 name: 'UsuariosMascotasEditar',
                 component: MascotasEditar,
             },
             {
-                path: 'usuarios/:id_usuario/mascotas/:id_mascota/alertar/:tipo',
+                path: 'clientes/:id_usuario/mascotas/:id_mascota/alertar/:tipo',
                 props: true,
                 name: 'UsuariosMascotasAlertar',
                 component: MascotasAlertar

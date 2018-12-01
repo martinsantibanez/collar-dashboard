@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from './views/Home.vue'
-import vetRoutes from './vet/router.js';
-import userRoutes from './user/router.js';
+import vetRoutes from './vet/routes.js';
+import userRoutes from './user/routes.js';
 
 import Index from './Index';
 import Login from './Login';
