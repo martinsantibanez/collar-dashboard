@@ -9,7 +9,7 @@
           class="title lighten-2"
           primary-title
         >
-          ¿Seguro que desea eliminar?
+          {{titulo}}
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -33,10 +33,15 @@ export default {
   name: 'Confirmar',
   data(){
     return {
-      estado: false
+      estado: false,
     }
   },
-  // props: ['estado'],
+  props: {
+    titulo: {
+      type: String,
+      default: "¿Seguro que desea eliminar?"
+    }
+  },
   methods: {
     // confirmar(){
     // }

@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="titulo">
-    <h2>Editando a {{usuario.email}}</h2>
+    <h2>Editando tu perfil</h2>
   </div>
   <b-row class="">
     <b-col cols="8" offset="2" class="card card-body">
@@ -11,7 +11,7 @@
                   :label-cols="2"
                   breakpoint="md"
                   label="Email">
-          <b-form-input id="email" v-model.trim="usuario.email" required></b-form-input>
+          <b-form-input id="email" v-model.trim="usuario.email"></b-form-input>
         </b-form-group>
         <b-form-group
                   horizontal
@@ -24,8 +24,9 @@
                   horizontal
                   :label-cols="2"
                   breakpoint="md"
-                  label="Nombre">
-          <b-form-input type="text" id="name" v-model.trim="usuario.nombre" required></b-form-input>
+                  label="Nombre"
+                  required>
+          <b-form-input type="text" id="name" v-model.trim="usuario.nombre"></b-form-input>
         </b-form-group>
         <b-form-group
                   horizontal
@@ -33,13 +34,6 @@
                   breakpoint="md"
                   label="Telefono">
           <b-form-input type="number" id="telefono" v-model.trim="usuario.telefono"></b-form-input>
-        </b-form-group>
-        <b-form-group
-                  horizontal
-                  :label-cols="2"
-                  breakpoint="md"
-                  label="Domicilio">
-          <b-form-input type="text" id="domicilio" v-model.trim="usuario.domicilio"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Guardar</b-button>
       </b-form>
@@ -55,31 +49,27 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'UsuariosEditar',
-  props: ['id_usuario'],
   data () {
     return {
-      errors: []
     }
   },
-  computed: mapState('usuarios', {
-    usuario: state => state.usuario
+  computed: mapState('auth', {
+    usuario: state => state.user
   }),
   created(){
-    this.getUsuarioById(this.id_usuario);
+    this.getPerfilPropio();
   },
   methods: {
-    ...mapActions('usuarios', ['editUsuario', 'getUsuarioById']),
+    ...mapActions('auth', ['getPerfilPropio', 'editPerfilPropio']),
     async onSubmit (evt) {
       evt.preventDefault()
       try {
-        await this.editUsuario(this.usuario);
+        await this.editPerfilPropio(this.usuario);
         this.$router.replace({
-          name: 'UsuariosVer',
-          id_usuario: this.usuario._id
+          name: 'PerfilVet'
         });
       } catch(e) {
         console.log(e)
-        this.errors.push(e)
       }
     }
   }

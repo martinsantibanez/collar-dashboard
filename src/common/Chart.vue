@@ -10,7 +10,6 @@
         options: { //Chart.js options
           elements: {
             line: {
-              tension: 0, // disables bezier curves
             }
           },
           scales: {

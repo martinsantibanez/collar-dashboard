@@ -1,5 +1,5 @@
-import Layout from './components/Layout';
-import Dashboard from './views/Dashboard';
+import Layout from './components/Layout'
+import Dashboard from './views/Dashboard'
 import UsuariosLista from './views/Usuarios/Lista'
 import UsuariosCrear from './views/Usuarios/Crear'
 import UsuariosVer from './views/Usuarios/Ver'
@@ -11,12 +11,15 @@ import MascotasEditar from './views/Mascotas/Editar'
 import MascotasVer from './views/Mascotas/Ver'
 import MascotasAlertar from './views/Mascotas/Alertar'
 
+import Perfil from './views/Perfil'
+import PerfilEditar from './views/PerfilEditar'
+
 export default [
     {
         path: '/vet',
         name: 'vet',
         component: Layout,
-        redirect: {name: 'Dashboard'},
+        redirect: { name: 'Dashboard' },
         meta: { requiresAuth: true },
         children: [
             {
@@ -93,7 +96,16 @@ export default [
                 name: 'MascotasAlertar',
                 component: MascotasAlertar
             },
-            
+            {
+                path: 'perfil',
+                name: 'PerfilVet',
+                component: Perfil
+            },
+            {
+                path: 'perfil/editar',
+                name: 'PerfilVetEditar',
+                component: PerfilEditar
+            }
         ]
     },
 ];

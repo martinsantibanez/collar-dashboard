@@ -60,10 +60,13 @@
             </div>
             <div class="card-body">
               <div>{{ alerta.descripcion }}</div>
-            <div v-if="!alerta.leida">
-              <b-btn variant="light" class="mt-4 btn-sm">Cancelar alerta</b-btn>
-              <!-- TODO cancelar alerta -->
-            </div>
+              <confirmar @confirmar="eliminarAlerta(alerta._id)" v-if="!alerta.leida" titulo="¿Seguro que desea cancelar?">
+                <b-button slot="boton" variant="light" class="mt-4 btn-sm">Cancelar</b-button>
+              </confirmar>
+            <!-- <div v-if="!alerta.leida">
+
+                <b-btn variant="light" class="mt-4 btn-sm" @click="eliminarAlerta(alerta._id)">Cancelar alerta</b-btn>
+            </div>-->
             </div>
             <div class="card-footer" v-if="alerta.leida">
               <div>Leida el {{ alerta.fechaLeida }}</div>
@@ -98,7 +101,7 @@ export default {
     this.getMascotaById(this.id_mascota);
   },
   methods: {
-    ...mapActions('mascotas', ['getMascotaById', 'deleteMascota']),
+    ...mapActions('mascotas', ['getMascotaById', 'deleteMascota', 'deleteAlerta']),
     async eliminarMascota(id){
       await this.deleteMascota(id);
       if(this.id_usuario)
@@ -110,6 +113,10 @@ export default {
         this.$router.push({
           name: 'Mascotas'
         });
+    },
+    async eliminarAlerta(id){
+      await this.deleteAlerta(id);
+      await this.getMascotaById(this.id_mascota);
     }
   }
 }

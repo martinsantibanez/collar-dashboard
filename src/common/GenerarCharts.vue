@@ -40,6 +40,9 @@ export default {
             fill: false,
             label: this.tipo,
             backgroundColor: '#f87979',
+            pointBackgroundColor: '#000000',
+            pointBorderColor: '#000000',
+            borderColor: '#f87979',
             data: this.arrayDATA
           }
         ]

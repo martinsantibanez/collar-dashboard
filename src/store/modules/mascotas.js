@@ -42,6 +42,9 @@ export default {
     async createAlerta({commit, dispatch}, payload){
       await axios.post('mascotas/'+payload.id_mascota+'/alertas', payload.alerta);
       // commit()
+    },
+    async deleteAlerta({commit, dispatch}, id){
+      await axios.delete('alertas/'+id);
     }
   }
 }

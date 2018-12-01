@@ -23,6 +23,7 @@ export default {
         { title: 'Dashboard', route: { name: 'Dashboard' }, faIcon: 'fa fa-columns' },
         { title: 'Clientes', route: { name: 'Usuarios' }, faIcon: 'fa fa-users' },
         { title: 'Mascotas', route: { name: 'Mascotas' }, faIcon: 'fas fa-dog' },
+        { title: 'Mi Perfil', route: { name: 'PerfilVet'}, faIcon: 'fas fa-user' },
         { title: 'Logout', route: { name: 'Logout' }, faIcon: 'fas fa-sign-out-alt' },
       ]
     }
