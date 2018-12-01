@@ -3,7 +3,7 @@ import axios from 'axios';
 import router from '../router.js';
 
 export default function apiSetup() {
-  axios.defaults.baseURL = 'http://192.168.0.15:3000/api/';
+  axios.defaults.baseURL = 'http://localhost:3000/api/';
   axios.interceptors.request.use(function(config) {
     const token = store.getters['auth/token'];
     if(token) {
