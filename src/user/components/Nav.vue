@@ -16,9 +16,9 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="teal" dark fixed app>
+    <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>FutureCan</v-toolbar-title>
+      <v-toolbar-title>GarrasVet - FutureCan</v-toolbar-title>
     </v-toolbar>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         // { title: 'Perfil', route: { name: 'Perfil' }, icon: 'home' },
         { title: 'Perfil', route: { name: 'Perfil' }, icon: 'person' },
         { title: 'Mascotas', route: { name: 'MisMascotas' }, icon: 'pets' },
-        { title: 'Alertas', route: { name: 'MisAlertas' }, icon: 'warning' },
+        // { title: 'Alertas', route: { name: 'MisAlertas' }, icon: 'warning' },
         { title: 'Veterinarios', route: { name: 'Veterinarios' }, icon: 'healing' },
         { title: 'Logout', route: { name: 'Logout' }, icon: 'exit_to_app' },
       ],

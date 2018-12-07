@@ -43,7 +43,7 @@
     </v-list>
     <v-fab-transition>
       <v-btn
-        color="teal"
+        color="accent"
         dark
         absolute
         bottom

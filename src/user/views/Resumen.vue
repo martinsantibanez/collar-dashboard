@@ -2,19 +2,25 @@
   <v-container grid-list-md>
     <v-layout row wrap>
       <v-flex xs12 class="text-left">
-        <h2 class="mb-3">Bienvenido {{user.nombre}}</h2>
         <div v-for="mascota in mascotas" :key="mascota._id" class="mb-4">
-          <v-card>
-            <v-card-title primary-title>
-              <v-avatar color="red" class="mr-3">
-                <span class="white--text headline">{{ mascota.nombre[0] }}</span>
-              </v-avatar>
-              <h3 class="headline mb-0">{{mascota.nombre}}</h3>
-            </v-card-title>
+          <div class="info-container">
+            <v-layout row align-center>
+              <v-flex xs8>
+                <v-avatar color="red" class="mr-3" size="52">
+                  <span class="white--text headline">{{ mascota.nombre[0] }}</span>
+                </v-avatar>
+                <h3 class="nombre">{{mascota.nombre}}</h3>
+              </v-flex>
+              <v-flex xs4>
+                <temperatura text="1"></temperatura>
+
+              </v-flex>
+            </v-layout>
+          </div>
+          <v-card class="mt-3">
             <v-card-text>
-              <generar-charts tipo="Pulso"></generar-charts>
+              <generar-charts tipo="Pulso" :id_collar="mascota.collar"></generar-charts>
             </v-card-text>
-            <temperatura></temperatura>
           </v-card>
           <lista-alertas :alertas="mascota.alertas"></lista-alertas>
         </div>
@@ -66,5 +72,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.nombre{
+  display: inline-flex;
+  color: #000;
+  font-size: 35px;
+  font-weight: 500;
+  vertical-align: middle;
+  line-height: 1;
+}
 
 </style>

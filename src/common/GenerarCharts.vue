@@ -12,8 +12,8 @@ import Socket from './Socket.js';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'Dashboard',
-  props: ['id_mascota', 'tipo'], //tipo: Temperatura o Pulso
+  name: 'GenerarCharts',
+  props: ['id_collar', 'tipo'], //tipo: Temperatura o Pulso
   data () {
     return {
       msg: 'Welcome to dashboard',
@@ -26,23 +26,28 @@ export default {
     user: state => state.user
   }),
   components: {Chart},
-  mounted(){
+  created(){
+    this.socket.emit('room', this.id_collar);
     this.socket.on(this.tipo, (data) => {
       this.pushMax(this.arrayDATA, data);
       this.generateData();
     });
   },
+  beforeDestroy(){
+    this.socket.emit('salir', this.id_collar);
+  },
   methods: {
     generateData(){
+      var color="#d81b60";
       this.datacollection = {
         datasets: [
           {
             fill: false,
             label: this.tipo,
-            backgroundColor: '#f87979',
+            backgroundColor: color,
             pointBackgroundColor: '#000000',
             pointBorderColor: '#000000',
-            borderColor: '#f87979',
+            borderColor: color,
             data: this.arrayDATA
           }
         ]

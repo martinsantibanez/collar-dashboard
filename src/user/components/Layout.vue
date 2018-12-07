@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Nav></Nav>
-    <v-content class="mt-3">
+    <v-content>
       <router-view/>
     </v-content>
     <!-- <v-footer color="indigo" app inset>

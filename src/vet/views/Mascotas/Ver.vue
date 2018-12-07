@@ -12,7 +12,7 @@
               <li><strong>Año de nacimiento:</strong> {{mascota.nacimiento}} </li>
               <li><strong>ID:</strong> {{mascota._id}} </li>
               <li><strong>Raza:</strong> {{mascota.raza}} </li>
-              <li><strong>Sexo:</strong> {{mascota.sexo}} </li>
+              <!-- <li><strong>Sexo:</strong> {{mascota.sexo}} </li> -->
             </ul>
             <div class="text-center">
               <b-button v-if="id_usuario" :to="{name: 'UsuariosMascotasEditar', id_usuario: id_usuario, id_mascota: mascota._id}" class="px-3" variant="primary">Editar</b-button>
@@ -26,23 +26,48 @@
         </div>
       </div>
     </div>
-    <div class="title mt-4">
-      <h2>Emparejado con collar <code>asdf1234</code></h2>
-      <!-- TODO: Emparejar con collar -->
+    <div v-if="!mascota.collar">
+      <div class="title mt-4">
+        <h2>No hay un collar asociado. <code @click="modalCollar = true">Sincroniza uno.</code></h2>
+      </div>
     </div>
-    <div class="card card-body">
-      <div class="row">
-        <div class="col-6">
-          <!-- TODO bindear id mascota -->
-          <generar-charts tipo="Temperatura"></generar-charts>
-          <router-link class="btn btn-outline-danger mt-3" :to="{ name: 'MascotasAlertar', params: {id_mascota: mascota._id, tipo: 'Temperatura'} }"><i class="fas fa-exclamation-triangle"></i> Alertar por temperatura</router-link>
-        </div>
-        <div class="col-6">
-          <generar-charts tipo="Pulso"></generar-charts>
-          <router-link class="btn btn-outline-danger mt-3" :to="{ name: 'MascotasAlertar', params: {id_mascota: mascota._id, tipo: 'Pulso'} }"><i class="fas fa-exclamation-triangle"></i> Alertar por pulso</router-link>
+    <div v-else>
+      <div class="title mt-4">
+        <h2>Emparejado con collar <code @click="modalCollar = true"><a>{{mascota.collar}}</a></code></h2>
+      </div>
+      <div class="card card-body">
+        <div class="row">
+          <div class="col-6">
+            <!-- TODO bindear id mascota -->
+            <generar-charts tipo="Temperatura" :id_collar="mascota.collar"></generar-charts>
+            <router-link class="btn btn-outline-danger mt-3" :to="{ name: 'MascotasAlertar', params: {id_mascota: mascota._id, tipo: 'Temperatura'} }"><i class="fas fa-exclamation-triangle"></i> Alertar por temperatura</router-link>
+          </div>
+          <div class="col-6">
+            <generar-charts tipo="Pulso"></generar-charts>
+            <router-link class="btn btn-outline-danger mt-3" :to="{ name: 'MascotasAlertar', params: {id_mascota: mascota._id, tipo: 'Pulso'} }"><i class="fas fa-exclamation-triangle"></i> Alertar por pulso</router-link>
+          </div>
         </div>
       </div>
     </div>
+    <b-modal v-model="modalCollar" centered>
+      <b-form-group
+        horizontal
+        :label-cols="3"
+        breakpoint="md"
+        label="ID Collar">
+        <b-form-input id="collar" v-model.trim="newCollar" :value="mascota.collar"></b-form-input>
+      </b-form-group>
+      <div slot="modal-footer" class="w-100">
+        <div class="float-right">
+        <b-btn variant="danger" @click="quitarCollar()">
+          Quitar
+        </b-btn>
+        <b-btn variant="primary" @click="cambiarCollar()" class="ml-3">
+          Cambiar
+        </b-btn>
+        </div>
+      </div>
+    </b-modal>
     <div class="title mt-4">
       <h2>Alertas</h2>
     </div>
@@ -92,16 +117,21 @@ export default {
   components: { GenerarCharts, Confirmar },
   data () {
     return {
+      modalCollar: false,
+      newCollar: ''
     }
   },
   computed: mapState('mascotas', {
     mascota: state => state.mascota
   }),
   created(){
-    this.getMascotaById(this.id_mascota);
+    this.getMascota();
   },
   methods: {
-    ...mapActions('mascotas', ['getMascotaById', 'deleteMascota', 'deleteAlerta']),
+    ...mapActions('mascotas', ['getMascotaById', 'deleteMascota', 'deleteAlerta', 'sincronizar', 'eliminarCollar']),
+    async getMascota(){
+      await this.getMascotaById(this.id_mascota);
+    },
     async eliminarMascota(id){
       await this.deleteMascota(id);
       if(this.id_usuario)
@@ -116,7 +146,17 @@ export default {
     },
     async eliminarAlerta(id){
       await this.deleteAlerta(id);
-      await this.getMascotaById(this.id_mascota);
+      this.getMascota();
+    },
+    async cambiarCollar(){
+      await this.sincronizar( { id_mascota: this.id_mascota, id_collar: this.newCollar } );
+      this.getMascota();
+      this.modalCollar = false;
+    },
+    async quitarCollar(){
+      await this.eliminarCollar(this.id_mascota);
+      this.getMascota();
+      this.modalCollar=false;
     }
   }
 }
@@ -133,4 +173,7 @@ li{
   color: #fff;
 }
 
+code{
+  cursor: pointer;
+}
 </style>
