@@ -16,8 +16,11 @@
       <div class="temperatura">
         {{temperatura}}° C
       </div>
-      <div class="text-center temperaturaEstado">
+      <div class="text-center temperaturaEstado" v-if="temperatura < 39">
         Normal
+      </div>
+      <div class="text-center temperaturaEstado" style="color: #d81b60" v-else>
+        Alta
       </div>
     </div>
   </div>
