@@ -1,21 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
 import vetRoutes from './vet/routes.js';
 import userRoutes from './user/routes.js';
 
-import Index from './Index';
 import Login from './Login';
 import Logout from './Logout';
 
-import store from './store/';
 Vue.use(Router)
 
 const baseRoutes = [
   {
     path: '/',
     name: 'Index',
-    // component: Index,
     redirect: { name: 'Login'}
   },
   {

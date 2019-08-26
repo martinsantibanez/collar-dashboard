@@ -1,7 +1,21 @@
-# Frontend FutureCan
+# FutureCan
 - [mertinop/collar-dashboard](https://github.com/mertinop/collar-dashboard): Vue.js Frontend
 - [mertinop/collar-api](https://github.com/mertinop/collar-api): Express API
 - [mertinop/collar-server](https://github.com/mertinop/collar-server): Socketio server (para datos en tiempo real)
+
+## About
+Vue frontend for "FutureCan".
+
+Code and docs are in Spanish because it was a school project. 
+
+There are 2 possible roles; `user` or `vet`. After login, the routing is handled depending on the role either on `src/user/routes.js` or `src/vet/routes.js`.
+
+Stack: 
+-
+- Vue.js
+- Vuetify
+- Vuex
+
 
 ## Instalacion
  - Configurar `src/common/apiSetup.js` y `src/common/Socket.js`
